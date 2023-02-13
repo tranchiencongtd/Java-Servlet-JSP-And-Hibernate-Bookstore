@@ -29,7 +29,7 @@
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 		<!-- Sidebar -->
-		<jsp:include page="sidebar.jsp" />
+		<jsp:directive.include file="sidebar.jsp" />
 		<!-- End of Sidebar -->
 
 		<!-- Content Wrapper -->
@@ -37,7 +37,7 @@
 			<!-- Main Content -->
 			<div id="content">
 				<!-- Topbar -->
-				<jsp:include page="topbar.jsp" />
+				<jsp:directive.include file="topbar.jsp" />
 				<!-- End Topbar -->
 
 				<!-- Begin Page Content -->
@@ -383,7 +383,7 @@
 			</div>
 			<!-- End of Main Content -->
 
-			<jsp:include page="footer.jsp" />
+			<jsp:directive.include file="footer.jsp" />
 		</div>
 		<!-- End Content Wrapper -->
 	</div>

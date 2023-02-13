@@ -26,6 +26,16 @@
 <link
 	href="${pageContext.request.contextPath}/assets/admin/css/sb-admin-2.min.css"
 	rel="stylesheet">
+	
+<style>
+	.error {
+		color: red; 
+		font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    width: 100%;
+	}
+</style>	
 </head>
 <body id="page-top">
 	<!-- Page Wrapper -->
@@ -58,57 +68,48 @@
 						<div class="col-xl-3 col-md-6 mb-4"></div>
 
 						<div class="col-xl-3 col-md-6 mb-4 text-right">
-							<a href="${pageContext.request.contextPath}/admin/user_form.jsp"" class="btn btn-primary"> <span
-								class="icon text-white-50"> </span> <span class="text">+
-									Tạo mới</span>
+							<a href="#" class="btn btn-primary"> <span
+								class="icon text-white-50"> </span> <span class="text"></span>
 							</a>
 						</div>
 					</div>
 
 					<!-- Content Row -->
-					<!-- DataTales Example -->
-					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary"></h6>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%"
-									cellspacing="0">
-									<thead>
-										<tr>
-											<th>STT</th>
-											<th>Email</th>
-											<th>Họ tên</th>
-											<th>Thao tác</th>
-										</tr>
-									</thead>
-									<tfoot>
-										<tr>
-											<th width="5%"></th>
-											<th></th>
-											<th></th>
-											<th width="9%"></th>
-										</tr>
-									</tfoot>
-									<tbody>
-										<c:forEach var="user" items="${listUsers}" varStatus="status">
-											<tr>
-												<td>${status.index + 1}</td>
-												<td>${user.email}</td>
-												<td>${user.fullName}</td>
-												<td><a href="#" class="btn btn-circle"> <i
-														class="fas fa-edit"></i>
-												</a> <a href="#" class="btn btn-circle"> <i
-														class="fas fa-trash"></i>
-												</a></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
+					<div class="row justify-content-center">
+						<div class="col-lg-5">
+							<div class="p-5">
+								<div class="text-center">
+									<h1 class="h4 text-gray-900 mb-4">Thêm mới</h1>
+								</div>
+								<form class="user" id="userForm" action="create_user" method="post">
+									<div class="form-group">
+										<input type="email" class="form-control form-control-user"
+											name="email" id="email" aria-describedby="emailHelp" placeholder="Email">
+									</div>
+
+									<div class="form-group">
+										<input type="text" class="form-control form-control-user"
+											name = "fullname" id="fullname" placeholder="Họ và tên">
+									</div>
+
+									<div class="form-group">
+										<input type="password" class="form-control form-control-user"
+											id="password" name="password" placeholder="Mật khẩu">
+									</div>
+
+										<button type="submit"
+										class="btn btn-primary btn-user btn-block">
+										Lưu </button>
+										
+										<a type="button"
+										class="btn btn-primary btn-user btn-block" id="buttonCancel">
+										Hủy </a>
+									<hr>
+								</form>
 							</div>
 						</div>
 					</div>
+
 					<!-- End Content Row -->
 				</div>
 				<!-- /.container-fluid -->
@@ -149,16 +150,53 @@
 		</div>
 	</div>
 
+
 	<!-- Bootstrap core JavaScript-->
 	<script
 		src="${pageContext.request.contextPath}/assets/admin/vendor/jquery/jquery.min.js"></script>
+	
+	<script
+		src="${pageContext.request.contextPath}/assets/admin/vendor/jquery/jquery.validate.min.js">
+	</script>
+	
 	<script
 		src="${pageContext.request.contextPath}/assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="${pageContext.request.contextPath}/assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="${pageContext.request.contextPath}/assets/admin/js/sb-admin-2.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/admin/js/sb-admin-2.min.js"></script>
+	
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#userForm").validate({
+				rules : {
+					email : {
+						required : true,
+						email : true
+					},
+					fullname : "required",
+					password : "required",
+				},
+				messages : {
+					email : {
+						required : "Please enter email",
+						email : "Please enter an valid email address"
+					},
+					fullname : "Please enter full name",
+					password : "Please enter password"
+				}
+			});
+
+			$("#buttonCancel").click(function() {
+				history.go(-1);
+			});
+		});
+	</script>
+
 </body>
 </html>

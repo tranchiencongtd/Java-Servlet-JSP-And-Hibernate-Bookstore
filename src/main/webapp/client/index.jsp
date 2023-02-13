@@ -23,13 +23,13 @@
 </head>
 <body>
 	<div id="main">
-		<jsp:include page="header.jsp" />
+		<jsp:directive.include file="header.jsp" />
 
 		<div>
 			<h1>hay là do đây</h1>
 		</div>
 
-   	<jsp:include page="footer.jsp" />
+   	<jsp:directive.include file="footer.jsp" />
 	</div>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
