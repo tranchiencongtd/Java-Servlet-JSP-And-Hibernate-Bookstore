@@ -84,8 +84,7 @@
 									<thead>
 										<tr>
 											<th>STT</th>
-											<th>Email</th>
-											<th>Họ tên</th>
+											<th>Tên danh mục</th>
 											<th>Thao tác</th>
 										</tr>
 									</thead>
@@ -93,16 +92,14 @@
 										<tr>
 											<th width="5%"></th>
 											<th></th>
-											<th></th>
 											<th width="9%"></th>
 										</tr>
 									</tfoot>
 									<tbody>
-										<c:forEach var="user" items="${listUsers}" varStatus="status">
+										<c:forEach var="category" items="${listCategory}" varStatus="status">
 											<tr>
 												<td>${status.index + 1}</td>
-												<td>${user.email}</td>
-												<td>${user.fullName}</td>
+												<td>${category.name}</td>
 												<td><a href="#" class="btn btn-circle"> <i
 														class="fas fa-edit"></i>
 												</a> <a href="#" class="btn btn-circle"> <i

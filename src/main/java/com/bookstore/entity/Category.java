@@ -11,6 +11,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -19,6 +21,10 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "category", catalog = "bookstoredb")
+@NamedQueries({
+	  @NamedQuery(name = "Category.findAll", query = "SELECT category FROM Category category ORDER BY category.name")
+	 ,@NamedQuery(name = "Category.countAll", query = "SELECT COUNT(*) FROM Category")
+})
 public class Category implements java.io.Serializable {
 
 	private Integer categoryId;

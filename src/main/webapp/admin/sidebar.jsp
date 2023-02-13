@@ -34,7 +34,7 @@
 			class="fas fa-fw fa-chart-area"></i> <span>Tài khoản</span></a></li>
 
 	<!-- Nav Item - Tables -->
-	<li class="nav-item"><a class="nav-link" href="tables.html"> <i
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/list_category"> <i
 			class="fas fa-fw fa-table"></i> <span>Danh mục</span></a></li>
 
 	<!-- Divider -->

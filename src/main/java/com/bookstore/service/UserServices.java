@@ -1,5 +1,6 @@
 package com.bookstore.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.bookstore.dao.UserDAO;
@@ -8,25 +9,64 @@ import com.bookstore.entity.Users;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public class UserServices {
 	private EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
+	private HttpServletRequest request;
+	private HttpServletResponse response; 
 	private UserDAO userDAO;
 	
-	public UserServices() {
-		entityManagerFactory = Persistence.createEntityManagerFactory("BookStore");
-		entityManager = entityManagerFactory.createEntityManager();
-		userDAO = new UserDAO(entityManager);
+	public UserServices(HttpServletRequest request, HttpServletResponse response) {
+		this.entityManagerFactory = Persistence.createEntityManagerFactory("BookStore");
+		this.entityManager = entityManagerFactory.createEntityManager();
+		this.userDAO = new UserDAO(entityManager);
+		this.request = request;
+		this.response = response;
 	}
 	
-	public List<Users> listUser() {
-		List<Users> listUsers = userDAO.listAll();
-		return listUsers;
-	} 
+	public void listUser() throws ServletException, IOException {
+		listUser(null);
+	}
 	
-	public void createUser(String email, String fullname, String password) {
-		Users newUsers = new Users(email, fullname, password);
-		userDAO.create(newUsers);
+	public void listUser(String message) throws ServletException, IOException {
+		List<Users> listUsers = userDAO.listAll();
+		
+		request.setAttribute("listUsers", listUsers);
+		
+		if(message != null) {
+			request.setAttribute("message", message);
+		}
+		
+		String listPage = "user_list.jsp";
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
+		requestDispatcher.forward(request, response);
+		
+	}
+	
+	public void createUser() throws ServletException, IOException {
+		String email = request.getParameter("email");
+		String fullName = request.getParameter("fullname");
+		String password = request.getParameter("password");
+		
+		Users existUser = userDAO.findByEmail(email);
+		
+		if(existUser != null) {
+			String message = "Email: " + email + " đã tồn tại!";
+			request.setAttribute("message", message);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+			requestDispatcher.forward(request, response);
+		} else {
+			Users newUsers = new Users(email, fullName, password);
+			userDAO.create(newUsers);
+			
+			String message = "Thêm mới thành công";
+			listUser(message);
+		}
 	}
 }
