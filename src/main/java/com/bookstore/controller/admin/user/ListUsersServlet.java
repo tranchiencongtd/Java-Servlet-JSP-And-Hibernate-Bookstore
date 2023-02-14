@@ -1,4 +1,4 @@
-package com.bookstore.controller.admin;
+package com.bookstore.controller.admin.user;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

@@ -58,7 +58,7 @@
 						<div class="col-xl-3 col-md-6 mb-4"></div>
 
 						<div class="col-xl-3 col-md-6 mb-4 text-right">
-							<a href="${pageContext.request.contextPath}/admin/user_form.jsp"" class="btn btn-primary"> <span
+							<a href="${pageContext.request.contextPath}/admin/user_form.jsp" class="btn btn-primary"> <span
 								class="icon text-white-50"> </span> <span class="text">+
 									Tạo mới</span>
 							</a>
@@ -103,9 +103,9 @@
 												<td>${status.index + 1}</td>
 												<td>${user.email}</td>
 												<td>${user.fullName}</td>
-												<td><a href="#" class="btn btn-circle"> <i
+												<td><a href="edit_user?id=${user.userId}" class="btn btn-circle"> <i
 														class="fas fa-edit"></i>
-												</a> <a href="#" class="btn btn-circle"> <i
+												</a> <a href="delete_user?id=${user.userId}" class="btn btn-circle"> <i
 														class="fas fa-trash"></i>
 												</a></td>
 											</tr>

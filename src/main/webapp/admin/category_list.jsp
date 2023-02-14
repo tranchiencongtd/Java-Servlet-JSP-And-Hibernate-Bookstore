@@ -58,7 +58,7 @@
 						<div class="col-xl-3 col-md-6 mb-4"></div>
 
 						<div class="col-xl-3 col-md-6 mb-4 text-right">
-							<a href="${pageContext.request.contextPath}/admin/user_form.jsp"" class="btn btn-primary"> <span
+							<a href="${pageContext.request.contextPath}/admin/category_form.jsp"" class="btn btn-primary"> <span
 								class="icon text-white-50"> </span> <span class="text">+
 									Tạo mới</span>
 							</a>

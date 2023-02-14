@@ -24,6 +24,7 @@ import jakarta.persistence.Table;
 @NamedQueries({
 	  @NamedQuery(name = "Category.findAll", query = "SELECT category FROM Category category ORDER BY category.name")
 	 ,@NamedQuery(name = "Category.countAll", query = "SELECT COUNT(*) FROM Category")
+	 ,@NamedQuery(name = "Category.findByName", query = "SELECT c FROM Category c WHERE c.name = :name")
 })
 public class Category implements java.io.Serializable {
 

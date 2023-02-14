@@ -79,40 +79,30 @@
 						<div class="col-lg-5">
 							<div class="p-5">
 								<div class="text-center">
-								  <c:if test="${ user != null }">
+								  <c:if test="${ category  != null }">
 								  	<h1 class="h4 text-gray-900 mb-4">Chỉnh sửa</h1>
 								  </c:if>
-									 <c:if test="${ user == null }">
+									 <c:if test="${ category  == null }">
 								  	<h1 class="h4 text-gray-900 mb-4">Thêm mới</h1>
 								  </c:if>
 								</div>
-								<c:if test="${ user != null }">
-									<form class="user" id="userForm" action="update_user" method="post" autocomplete="off">
-									<input type="hidden" name="userId" value="${user.userId}">
-								</c:if>
-								<c:if test="${ user == null }">
-										<form class="user" id="userForm" action="create_user" method="post" autocomplete="off">
-								</c:if>
-									<div class="form-group">
-										<input type="email" class="form-control form-control-user"
-											name="email" id="email" aria-describedby="emailHelp" placeholder="Email" value="${ user.email }">
-									</div>
+									<c:if test="${ category != null }">
+										<form class="user" id="categoryForm" action="update_category" method="post" autocomplete="off">
+										<input type="hidden" name="categoryId" value="${category.categoryId}">
+									</c:if>
+									<c:if test="${category == null}">
+											<form class="user" id="categoryForm" action="create_category" method="post" autocomplete="off">
+									</c:if>
 
 									<div class="form-group">
 										<input type="text" class="form-control form-control-user"
-											name = "fullname" id="fullname" placeholder="Họ và tên" value="${ user.fullName }"> 
+											name="name" placeholder="Tên danh mục" required value="${category.name}"> 
 									</div>
 
-									<div class="form-group">
-										<input type="password" class="form-control form-control-user"
-											id="password" name="password" placeholder="Mật khẩu" value="${ user.password }">
-									</div>
-
+									<div>
 										<input type="button" value="Lưu" class="btn btn-primary btn-user btn-block" id="btnsubmit" onclick="submitForm()">
-										
-										<a type="button"
-										class="btn btn-primary btn-user btn-block" id="buttonCancel">
-										Hủy </a>
+										<a type="button" class="btn btn-primary btn-user btn-block" id="buttonCancel"> Hủy </a>
+									</div>
 									<hr>
 								</form>
 							</div>
@@ -182,22 +172,12 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#userForm").validate({
-				rules : {
-					email : {
-						required : true,
-						email : true
-					},
-					fullname : "required",
-					password : "required",
+			$("#categoryForm").validate({
+				rules: {
+					name: "required",
 				},
-				messages : {
-					email : {
-						required : "Please enter email",
-						email : "Please enter an valid email address"
-					},
-					fullname : "Please enter full name",
-					password : "Please enter password"
+				messages: {
+					name: "Please enter category name",
 				}
 			});
 
@@ -211,7 +191,7 @@
 			   // Usually the form name is not repeated
 			   // but duplicate names are possible in HTML
 			   // Therefore to work around the issue, enforce the correct index
-			   var frm = document.getElementById("userForm");
+			   var frm = document.getElementById("categoryForm");
 			   frm.submit(); // Submit the form
 			   frm.reset();  // Reset all form data
 			   return false; // Prevent page refresh
