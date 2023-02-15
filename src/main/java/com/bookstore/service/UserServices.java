@@ -15,15 +15,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class UserServices {
-	private EntityManagerFactory entityManagerFactory;
-	private EntityManager entityManager;
 	private HttpServletRequest request;
 	private HttpServletResponse response; 
 	private UserDAO userDAO;
 	
-	public UserServices(HttpServletRequest request, HttpServletResponse response) {
-		this.entityManagerFactory = Persistence.createEntityManagerFactory("BookStore");
-		this.entityManager = entityManagerFactory.createEntityManager();
+	public UserServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
 		this.userDAO = new UserDAO(entityManager);
 		this.request = request;
 		this.response = response;

@@ -1,5 +1,4 @@
 package com.bookstore.controller.admin.user;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,11 +8,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import com.bookstore.controller.BaseServlet;
 import com.bookstore.entity.Users;
 import com.bookstore.service.UserServices;
 
 @WebServlet("/admin/list_users")
-public class ListUsersServlet extends HttpServlet {
+public class ListUsersServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
        
     public ListUsersServlet() {
@@ -21,7 +21,7 @@ public class ListUsersServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserServices userServices = new UserServices(request, response);
+		UserServices userServices = new UserServices(entityManager, request, response);
 		userServices.listUser();
 	}
 

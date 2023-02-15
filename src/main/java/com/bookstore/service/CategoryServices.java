@@ -7,23 +7,17 @@ import com.bookstore.dao.CategoryDAO;
 import com.bookstore.entity.Category;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class CategoryServices {
-	private EntityManagerFactory entityManagerFactory;
-	private EntityManager entityManager;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	private CategoryDAO categoryDAO;
 
-	public CategoryServices(HttpServletRequest request, HttpServletResponse response) {
-		this.entityManagerFactory = Persistence.createEntityManagerFactory("BookStore");
-		this.entityManager = entityManagerFactory.createEntityManager();
+	public CategoryServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
 		this.categoryDAO = new CategoryDAO(entityManager);
 		this.request = request;
 		this.response = response;
@@ -52,7 +46,7 @@ public class CategoryServices {
 		Category existCategory = categoryDAO.findByName(name);
 		
 		if (existCategory != null) {
-			String message = "Không thể tạo danh mục." + " Đã tồn tại danh mục có tên" + name;
+			String message = "Không thể tạo danh mục." + " Đã tồn tại danh mục có tên " + name;
 			request.setAttribute("message", message);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
 			requestDispatcher.forward(request, response);
@@ -73,5 +67,40 @@ public class CategoryServices {
 		String editPage = "category_form.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
 		requestDispatcher.forward(request, response);
+	}
+	
+	public void updateCategory() throws ServletException, IOException {
+		int categoryId =Integer.parseInt(request.getParameter("categoryId"));
+		String categoryName = request.getParameter("name");
+	
+		Category categoryById = categoryDAO.get(categoryId);
+		Category categoryByName = categoryDAO.findByName(categoryName);
+		
+		if (categoryByName != null && categoryById.getCategoryId() != categoryByName.getCategoryId() ) {
+			String message = "Không thể tạo danh mục." + " Đã tồn tại danh mục có tên " + categoryName;
+			request.setAttribute("message", message);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+			requestDispatcher.forward(request, response);
+			
+		}else {
+			categoryById.setName(categoryName);
+			categoryDAO.update(categoryById);
+			String message = "Cập nhật danh mục thành công!";
+			listCategory(message);
+		}
+	}
+	
+	public void deleteCategory() throws ServletException, IOException {
+		try {
+			int categoryId = Integer.parseInt(request.getParameter("id"));
+			categoryDAO.delete(categoryId);
+			
+			String message = "Xóa danh mục thành công!";
+			listCategory(message);
+		} catch(Exception ex) {
+			listCategory();
+			System.out.print(ex.getMessage());
+		}
+		
 	}
 }

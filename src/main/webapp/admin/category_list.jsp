@@ -100,9 +100,9 @@
 											<tr>
 												<td>${status.index + 1}</td>
 												<td>${category.name}</td>
-												<td><a href="#" class="btn btn-circle"> <i
+												<td><a href="edit_category?id=${category.categoryId}" class="btn btn-circle"> <i
 														class="fas fa-edit"></i>
-												</a> <a href="#" class="btn btn-circle"> <i
+												</a> <a href="delete_category?id=${category.categoryId}" class="btn btn-circle"> <i
 														class="fas fa-trash"></i>
 												</a></td>
 											</tr>
