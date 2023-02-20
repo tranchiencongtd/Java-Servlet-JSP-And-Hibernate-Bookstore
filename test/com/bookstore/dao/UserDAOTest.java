@@ -27,6 +27,8 @@ public class UserDAOTest {
 		entityManager =  entityManagerFactory.createEntityManager();
 		userDAO = new UserDAO(entityManager);
 	}
+	
+	
 
 	@Test
 	public void testCreateUsers() {
@@ -117,11 +119,19 @@ public class UserDAOTest {
 		Users user = userDAO.findByEmail(email);
 		assertNotNull(user);
 	}
+	
+	@Test
+	public void testCheckLogin() {
+		String email ="congtc.dev@gmail.com";
+		String password ="12345678";
+		boolean checkLogin = userDAO.checkLogin(email, password);
+		
+		assertTrue(checkLogin);
+	}
 
 	@AfterClass 
 	public static void tearDownClass( ) {
 		entityManager.close();
 		entityManagerFactory.close();
 	}
-	
 }

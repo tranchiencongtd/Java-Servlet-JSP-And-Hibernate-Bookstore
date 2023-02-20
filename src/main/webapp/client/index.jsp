@@ -16,8 +16,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" />
-<link href="${pageContext.request.contextPath}/assets/client/sass/style.css"
-	rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/assets/client/sass/style.css" rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <title>Tiki - Mua hàng online giá tốt, hàng chuẩn, ship nhanh</title>
 </head>
@@ -38,7 +37,7 @@
 	<script src="./assets/client/js/header.js"></script>
 	<script src="./assets/client/js/simple_slider.js"></script>
 	<script src="./assets/client/js/sliders.js"></script>
-	<script src="./assets/client/js/timer.js"></script>
+	<!-- <script src="./assets/client/js/timer.js"></script> -->
 	<script src="./assets/client/js/slider_deals.js"></script>
 	<script src="./assets/client/js/slider_cdn.js"></script>
 	<script src="./assets/client/js/sticky.js"></script>
