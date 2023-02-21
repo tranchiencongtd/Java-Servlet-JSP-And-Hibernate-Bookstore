@@ -7,8 +7,6 @@ import com.bookstore.dao.UserDAO;
 import com.bookstore.entity.Users;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -110,7 +108,28 @@ public class UserServices {
 		} catch(Exception ex) {
 			listUser();
 			System.out.print(ex.getMessage());
-		}
+		}	
+	}
+	
+	public void login() throws ServletException, IOException {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
 		
+		boolean loginResult = userDAO.checkLogin(email, password);
+	        
+        if (loginResult) {
+        	
+        	request.getSession().setAttribute("userEmail", email);
+        	
+        	RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/");
+        	dispatcher.forward(request, response);
+        	
+        }else {
+        	String message = "Login failed!";
+        	request.setAttribute("message", message);
+        	
+        	RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+        	dispatcher.forward(request, response);
+        }
 	}
 }
