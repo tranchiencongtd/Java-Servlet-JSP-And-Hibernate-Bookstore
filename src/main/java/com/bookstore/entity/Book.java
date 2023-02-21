@@ -12,6 +12,8 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
@@ -23,6 +25,11 @@ import jakarta.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "book", catalog = "bookstoredb", uniqueConstraints = @UniqueConstraint(columnNames = "title"))
+@NamedQueries({
+	  @NamedQuery(name = "Users.findAll", query = "SELECT b FROM Book B")
+	 ,@NamedQuery(name = "Users.countAll", query = "SELECT COUNT(*) FROM Book")
+	 ,@NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title"), 
+})
 public class Book implements java.io.Serializable {
 
 	private Integer bookId;
