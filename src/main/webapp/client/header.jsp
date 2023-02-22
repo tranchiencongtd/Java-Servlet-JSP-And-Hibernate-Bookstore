@@ -13,7 +13,7 @@
 						<a href="#" class="menu-btn"> <img
 							src="${pageContext.request.contextPath}/assets/client/img/header/hambuger.png" alt="" class="hambuger" />
 							<div class="wrap">
-								<span>Danh sách</span> <span class="text-icon"> Sản Phẩm <img
+								<span>Danh sách</span> <span class="text-icon"> Sản phẩm<img
 									src="${pageContext.request.contextPath}/assets/client/img/header/arrow_icon.png" alt="arrow-icon" />
 								</span>
 							</div>
@@ -37,7 +37,7 @@
 				<div class="form-search" id="form-search">
 					<div class="form-search-content">
 						<input type="text"
-							placeholder="Tìm kiếm sản phẩm mong muốn"
+							placeholder="TÃ¬m kiáº¿m sáº£n pháº©m mong muá»n"
 							id="search-auto-show" />
 						<button>
 							<img src="${pageContext.request.contextPath}/assets/client/img/header/icon_search.png" alt="icon-search"
@@ -60,7 +60,7 @@
 						<button class="register" id="register">Tạo tài khoản</button>
 						<button class="facebook">
 							<span> <i class="fa fa-facebook-square" aria-hidden="true"></i>
-							</span> Đăng nhập bằng Facebook
+							</span> Đăng nhập bằng facebook
 						</button>
 						<button class="google">
 							<span> <i class="fa fa-google-plus" aria-hidden="true"></i>
@@ -97,12 +97,12 @@
 				<a href="#" class="header-quicklinks">Sách văn học</a> <a
 					href="#" class="header-quicklinks">Sách trinh thám</a> <a href="#"
 					class="header-quicklinks">Nguồn cội</a> <a href="#"
-					class="header-quicklinks">Sự im lặng của bầy cừu</a> <a href="#"
-					 <a href="#" class="header-quicklinks"></a>
+					class="header-quicklinks">Sự im lặng của bầy cừu</a> 
+					<a href="#" class="header-quicklinks"></a>
 			</div>
 			<a href="#" class="tiki-seller"> <img
 				src="https://frontend.tikicdn.com/_desktop-next/static/img/icon-seller.svg"
-				alt="" /> <span class="text">Bán hàng cùng Tiki</span>
+				alt="" /> <span class="text">Bán hàng cùng tiki</span>
 			</a>
 		</div>
 	</div>

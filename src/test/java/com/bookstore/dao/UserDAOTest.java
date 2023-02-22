@@ -28,8 +28,6 @@ public class UserDAOTest {
 		userDAO = new UserDAO(entityManager);
 	}
 	
-	
-
 	@Test
 	public void testCreateUsers() {
 		Users user1 = new Users();

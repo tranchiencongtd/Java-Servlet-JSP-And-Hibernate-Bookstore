@@ -9,7 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.bookstore.entity.Category;
-import com.bookstore.entity.Users;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

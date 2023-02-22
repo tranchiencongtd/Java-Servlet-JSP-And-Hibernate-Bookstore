@@ -26,8 +26,8 @@ import jakarta.persistence.UniqueConstraint;
 @Entity
 @Table(name = "book", catalog = "bookstoredb", uniqueConstraints = @UniqueConstraint(columnNames = "title"))
 @NamedQueries({
-	  @NamedQuery(name = "Users.findAll", query = "SELECT b FROM Book B")
-	 ,@NamedQuery(name = "Users.countAll", query = "SELECT COUNT(*) FROM Book")
+	  @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
+	 ,@NamedQuery(name = "Book.countAll", query = "SELECT COUNT(*) FROM Book")
 	 ,@NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title"), 
 })
 public class Book implements java.io.Serializable {
@@ -47,6 +47,12 @@ public class Book implements java.io.Serializable {
 
 	public Book() {
 	}
+	
+	public Book(Integer bookId) {
+		super();
+		this.bookId = bookId;
+	}
+
 
 	public Book(Category category, String title, String author, String description, String isbn, byte[] image,
 			float price, Date publishDate, Date lastUpdateTime) {
