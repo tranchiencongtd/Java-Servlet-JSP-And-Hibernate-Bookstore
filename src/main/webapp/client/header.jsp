@@ -37,7 +37,7 @@
 				<div class="form-search" id="form-search">
 					<div class="form-search-content">
 						<input type="text"
-							placeholder="TÃ¬m kiáº¿m sáº£n pháº©m mong muá»n"
+							placeholder="Tìm kiếm sản phẩm mong muốn"
 							id="search-auto-show" />
 						<button>
 							<img src="${pageContext.request.contextPath}/assets/client/img/header/icon_search.png" alt="icon-search"
