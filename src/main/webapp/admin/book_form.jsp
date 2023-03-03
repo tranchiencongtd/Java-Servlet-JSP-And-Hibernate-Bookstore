@@ -128,7 +128,7 @@
 									
 									<div class="form-group">
 											 <label for="publishDate" class="form-label">Ngày xuất bản</label>
-											 <input type="date" id="publishDate" name="publishDate" size="20" class="form-control"
+											 <input type="text" id="publishDate" name="publishDate" size="20" class="form-control"
 												value="<fmt:formatDate pattern='dd/MM/yyyy' value='${book.publishDate}'/>" />
 									</div>
 									
@@ -232,46 +232,11 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#publishDate").change(function() {
-				formatDate(this);
-			});
-			
+		
 			$("#bookImage").change(function() {
 				showImageThumbnail(this);
 			});
 			
-			$("#bookForm").validate({
-				rules: {
-					
-					category: "required",
-					title: "required",
-					author: "required",
-					isbn:"required",
-					publishDate: "required",
-					
-					<c:if test="${book == null}">
-					bookImage: "required",
-					</c:if>
-					
-					price: "required",
-					description: "required"
-					
-				},
-				
-				messages: {
-					
-					category:"Please select a category for the book",
-					title: "Please enter title of the book",
-					author:"Please enter author of the bool",
-					isbn:"Please enter ISBN of the book",
-					publishDate:"Please enter publish date of the bool",
-					bookImage:"Please choose an image of the book",
-					price:"Please enter price of the book",
-					description:"Please enter description of the book"
-					
-				}
-			});
-
 			$("#buttonCancel").click(function() {
 				history.go(-1);
 			});
@@ -300,11 +265,7 @@
 			reader.readAsDataURL(file, "UTF-8");
 		}
 		
-		function formatDate(dateInput) {
-			const selectedDate = new Date(dateInput.value);
-	    const formattedDate = selectedDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' });
-	    $(dateInput).val(formattedDate);
-		}
+		
 	</script>
 
 </body>

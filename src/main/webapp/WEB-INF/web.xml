@@ -25,42 +25,12 @@
   </error-page>
   <servlet>
     <description></description>
-    <display-name>DeleteBookServlet</display-name>
-    <servlet-name>DeleteBookServlet</servlet-name>
-    <servlet-class>com.bookstore.controller.admin.book.DeleteBookServlet</servlet-class>
+    <display-name>UpdateBookServlet</display-name>
+    <servlet-name>UpdateBookServlet</servlet-name>
+    <servlet-class>com.bookstore.controller.admin.book.UpdateBookServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DeleteBookServlet</servlet-name>
-    <url-pattern>/DeleteBookServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>EditBookServlet</display-name>
-    <servlet-name>EditBookServlet</servlet-name>
-    <servlet-class>com.bookstore.controller.admin.book.EditBookServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>EditBookServlet</servlet-name>
-    <url-pattern>/EditBookServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>CreateBookServlet</display-name>
-    <servlet-name>CreateBookServlet</servlet-name>
-    <servlet-class>com.bookstore.controller.admin.book.CreateBookServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CreateBookServlet</servlet-name>
-    <url-pattern>/CreateBookServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>NewBookServlet</display-name>
-    <servlet-name>NewBookServlet</servlet-name>
-    <servlet-class>com.bookstore.controller.admin.book.NewBookServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>NewBookServlet</servlet-name>
-    <url-pattern>/NewBookServlet</url-pattern>
+    <servlet-name>UpdateBookServlet</servlet-name>
+    <url-pattern>/UpdateBookServlet</url-pattern>
   </servlet-mapping>
 </web-app>

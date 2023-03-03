@@ -28,7 +28,7 @@
 	<hr class="sidebar-divider">
 
 	<!-- Heading -->
-	<div class="sidebar-heading">Chá»©c nÄng</div>
+	<div class="sidebar-heading">Chức năng</div>
 	<!-- Nav Item  -->
 	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/list_users"> <i
 			class="fas fa-fw fa-chart-area"></i> <span>Tài khoản</span></a></li>

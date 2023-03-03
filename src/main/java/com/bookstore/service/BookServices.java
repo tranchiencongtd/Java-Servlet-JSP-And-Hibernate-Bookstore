@@ -117,10 +117,10 @@ public class BookServices {
 		Date publishDate = null;
 		
 		try {
-			publishDate = DateUtils.getDateFormatted(request.getParameter("publishDate"));
+			publishDate = DateUtils.getDateFormatted(request.getParameter("publishDate").replace('-', '/'));
 		} catch (ParseException ex) {
 			ex.printStackTrace();
-			throw new ServletException("Error parsing publish date (format is MM/dd/yyyy)");
+			throw new ServletException("Lỗi format date (format is dd/MM/yyyy)");
 		}
 		
 		book.setTitle(title);
@@ -147,6 +147,28 @@ public class BookServices {
 			
 			book.setImage(imageBytes);
 		}
+	}
+	
+	public void updateBook() throws ServletException, IOException {
+		Integer bookId = Integer.parseInt(request.getParameter("bookId"));
+		String title = request.getParameter("title");
+		
+		Book existBook = bookDAO.get(bookId);
+		Book bookByTitle = bookDAO.findByTitle(title);
+		
+		if (bookByTitle != null && !existBook.equals(bookByTitle)) {
+			String message = "Không thể cập nhật vì đã tồn tại tiêu đề: " + title;
+			listBooks(message);
+			return;
+		}
+		
+		readBookFields(existBook);
+		
+		bookDAO.update(existBook);
+		
+		String message = "Cập nhật thành công!.";
+		listBooks(message);
 		
 	}
+
 }
