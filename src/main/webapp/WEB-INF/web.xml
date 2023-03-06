@@ -25,12 +25,12 @@
   </error-page>
   <servlet>
     <description></description>
-    <display-name>UpdateBookServlet</display-name>
-    <servlet-name>UpdateBookServlet</servlet-name>
-    <servlet-class>com.bookstore.controller.admin.book.UpdateBookServlet</servlet-class>
+    <display-name>CommonFilter</display-name>
+    <servlet-name>CommonFilter</servlet-name>
+    <servlet-class>com.bookstore.controller.client.CommonFilter</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UpdateBookServlet</servlet-name>
-    <url-pattern>/UpdateBookServlet</url-pattern>
+    <servlet-name>CommonFilter</servlet-name>
+    <url-pattern>/CommonFilter</url-pattern>
   </servlet-mapping>
 </web-app>

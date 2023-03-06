@@ -5,7 +5,7 @@
 			<div class="middle-left-container">
 				<div class="logo-menu">
 					<div class="logo">
-						<a href="#"> <img src="${pageContext.request.contextPath}/assets/client/img/header/logo_tiki.png"
+						<a href="/"> <img src="${pageContext.request.contextPath}/assets/client/img/header/logo_tiki.png"
 							alt="logo-tiki" />
 						</a>
 					</div>
@@ -22,7 +22,7 @@
 							<ul class="navigation-wrapper">
 								 <c:forEach var="category" items="${listCategory}" >
 									<li class="menu-item">
-										<a href="#"
+										<a href="view_category?id=${category.categoryId}"
 											class="main-navigation-item"> <span class="icon-wrap">
 													<img src="${pageContext.request.contextPath}/assets/client/img/icon_menu_header/telephone.png"
 													alt="img" />
@@ -116,7 +116,7 @@
 			<div class="content" id="content">
 				<span class="slider"> 
 				<c:forEach var="category" items="${listCategory}" >
-					<a href="#">
+					<a href="view_category?id=${category.categoryId}">
 							<div class="catename"><c:out value="${category.name}"/> </div> 
 					</a> 
 				</c:forEach>
