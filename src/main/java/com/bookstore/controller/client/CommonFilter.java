@@ -12,18 +12,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 
-import com.bookstore.controller.BaseServlet;
 import com.bookstore.dao.CategoryDAO;
 import com.bookstore.entity.Category;
 
 @WebFilter("/*")
-public class CommonFilter extends BaseServlet implements Filter {
-	private static final long serialVersionUID = 1L;
+public class CommonFilter implements Filter {
 	private CategoryDAO categoryDAO;
   
 	public CommonFilter() {
 		super();
-    	categoryDAO = new CategoryDAO(entityManager);
+    	categoryDAO = new CategoryDAO();
     }
 	
 	@Override
@@ -47,7 +45,6 @@ public class CommonFilter extends BaseServlet implements Filter {
 	}
 	
 	public void init(FilterConfig fConfig) throws ServletException {
-    	categoryDAO = new CategoryDAO(entityManager);
 	}
 
 }

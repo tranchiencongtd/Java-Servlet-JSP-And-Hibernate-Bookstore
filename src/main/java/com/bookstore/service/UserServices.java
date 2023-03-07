@@ -17,8 +17,8 @@ public class UserServices {
 	private HttpServletResponse response; 
 	private UserDAO userDAO;
 	
-	public UserServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
-		this.userDAO = new UserDAO(entityManager);
+	public UserServices(HttpServletRequest request, HttpServletResponse response) {
+		this.userDAO = new UserDAO();
 		this.request = request;
 		this.response = response;
 	}

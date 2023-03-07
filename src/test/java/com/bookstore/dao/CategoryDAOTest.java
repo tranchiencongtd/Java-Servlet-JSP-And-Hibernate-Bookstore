@@ -23,7 +23,7 @@ public class CategoryDAOTest {
 	public static void setupClass() {
 		entityManagerFactory = Persistence.createEntityManagerFactory("BookStore");
 		entityManager =  entityManagerFactory.createEntityManager();
-		categoryDAO = new CategoryDAO(entityManager);
+		categoryDAO = new CategoryDAO();
 	}
 
 	@Test

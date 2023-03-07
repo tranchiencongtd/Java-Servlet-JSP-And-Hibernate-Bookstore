@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import com.bookstore.controller.BaseServlet;
 import com.bookstore.service.BookServices;
 
 @WebServlet("/admin/update_book")
@@ -17,7 +16,7 @@ import com.bookstore.service.BookServices;
 		maxFileSize = 1024 * 1024 * 5, // 5MB 
 		maxRequestSize = 1024 * 1024 * 5 * 5 // 25MB
 )
-public class UpdateBookServlet extends BaseServlet {
+public class UpdateBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public UpdateBookServlet() {
@@ -25,7 +24,7 @@ public class UpdateBookServlet extends BaseServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BookServices  bookServices = new BookServices(super.entityManager, request, response);
+		BookServices  bookServices = new BookServices(request, response);
 		bookServices.updateBook();
 	}
 

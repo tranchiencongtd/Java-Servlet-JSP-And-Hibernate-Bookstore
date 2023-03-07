@@ -25,9 +25,9 @@ public class BookServices {
 	private BookDAO bookDAO;
 	private CategoryDAO categoryDAO;
 	
-	public BookServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
-		this.bookDAO = new BookDAO(entityManager);
-		this.categoryDAO = new CategoryDAO(entityManager);
+	public BookServices(HttpServletRequest request, HttpServletResponse response) {
+		this.bookDAO = new BookDAO();
+		this.categoryDAO = new CategoryDAO();
 		this.request = request;
 		this.response = response;
 	}

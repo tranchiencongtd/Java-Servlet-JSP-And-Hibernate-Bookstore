@@ -27,7 +27,7 @@ public class BookDAOTest extends BaseDAOTest{
 	@BeforeClass
 	public static void setupClass() {
 		BaseDAOTest.setupClass();
-		bookDAO = new BookDAO(entityManager);
+		bookDAO = new BookDAO();
 	}
 
 	@AfterClass 

@@ -41,7 +41,7 @@ import jakarta.persistence.UniqueConstraint;
 						+ " OR b.description LIKE '%' || :keyword || '%'")
 })
 public class Book implements java.io.Serializable {
-
+	private static final long serialVersionUID = -3118468720221036780L;
 	private Integer bookId;
 	private Category category;
 	private String title;
@@ -105,7 +105,7 @@ public class Book implements java.io.Serializable {
 		this.bookId = bookId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id", nullable = false)
 	public Category getCategory() {
 		return this.category;
@@ -265,5 +265,22 @@ public class Book implements java.io.Serializable {
 		float averageRating = getAverageRating();
 		
 		return getRatingString(averageRating);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Book other = (Book) obj;
+		if (bookId == null) {
+			if (other.bookId != null)
+				return false;
+		} else if (!bookId.equals(other.bookId))
+			return false;
+		return true;
 	}
 }

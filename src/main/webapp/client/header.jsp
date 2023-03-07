@@ -5,7 +5,7 @@
 			<div class="middle-left-container">
 				<div class="logo-menu">
 					<div class="logo">
-						<a href="/"> <img src="${pageContext.request.contextPath}/assets/client/img/header/logo_tiki.png"
+						<a href=""> <img src="${pageContext.request.contextPath}/assets/client/img/header/logo_tiki.png"
 							alt="logo-tiki" />
 						</a>
 					</div>

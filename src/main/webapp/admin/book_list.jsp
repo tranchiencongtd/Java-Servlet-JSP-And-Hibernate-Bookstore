@@ -119,13 +119,14 @@
 												<td>${book.title}</td>
 												<td>${book.author}</td>
 												<td>${book.category.name}</td>
-												<td>$${book.price}</td>
+												<td>${book.price}</td>
 												<td><fmt:formatDate pattern='dd/MM/yyyy' value='${book.lastUpdateTime}' /></td>
 												<td><a href="edit_book?id=${book.bookId}" class="btn btn-circle"> <i
 															class="fas fa-edit"></i>
 													</a> <a href="delete_book?id=${book.bookId}" class="btn btn-circle"> <i
 															class="fas fa-trash"></i>
-													</a></td>
+													</a>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>

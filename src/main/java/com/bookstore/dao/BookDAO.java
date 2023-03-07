@@ -9,8 +9,8 @@ import jakarta.persistence.EntityManager;
 
 public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book> {
 
-	public BookDAO(EntityManager entityManager) {
-		super(entityManager);
+	public BookDAO() {
+		super();
 	}
 
 	@Override

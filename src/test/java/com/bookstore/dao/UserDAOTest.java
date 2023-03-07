@@ -25,7 +25,7 @@ public class UserDAOTest {
 	public static void setupClass() {
 		entityManagerFactory = Persistence.createEntityManagerFactory("BookStore");
 		entityManager =  entityManagerFactory.createEntityManager();
-		userDAO = new UserDAO(entityManager);
+		userDAO = new UserDAO();
 	}
 	
 	@Test
