@@ -23,14 +23,4 @@
     <error-code>500</error-code>
     <location>/error/500.jsp</location>
   </error-page>
-  <servlet>
-    <description></description>
-    <display-name>CommonFilter</display-name>
-    <servlet-name>CommonFilter</servlet-name>
-    <servlet-class>com.bookstore.controller.client.CommonFilter</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CommonFilter</servlet-name>
-    <url-pattern>/CommonFilter</url-pattern>
-  </servlet-mapping>
 </web-app>

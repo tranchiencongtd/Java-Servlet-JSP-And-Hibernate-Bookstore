@@ -182,5 +182,33 @@ public class BookServices {
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
 		requestDispatcher.forward(request, response);
 	}
+	
+	public void viewBookDetail() throws ServletException, IOException {
+		Integer bookId = Integer.parseInt(request.getParameter("id"));
+		Book book = bookDAO.get(bookId);
+		
+		request.setAttribute("book", book);
+		
+		String detailPage = "client/book_detail.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(detailPage);
+		requestDispatcher.forward(request, response);
+	}
+
+	public void search() throws ServletException, IOException {
+		String keyword = request.getParameter("keyword");
+		List<Book> result = null;
+		if (keyword.equals("")) {
+			result = bookDAO.listAll();
+		} else {
+			result = bookDAO.search(keyword);
+		}
+		
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("result", result);
+		
+		String resultPage = "frontend/search_result.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(resultPage);
+		requestDispatcher.forward(request, response);
+	}
 
 }
