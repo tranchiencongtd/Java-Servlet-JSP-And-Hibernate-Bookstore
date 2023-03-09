@@ -58,9 +58,10 @@
 						<div class="col-xl-3 col-md-6 mb-4"></div>
 
 						<div class="col-xl-3 col-md-6 mb-4 text-right">
-							<a href="${pageContext.request.contextPath}/admin/category_form.jsp"" class="btn btn-primary"> <span
-								class="icon text-white-50"> </span> <span class="text">+
-									Tạo mới</span>
+							<a
+								href="new_customer"
+								" class="btn btn-primary"> <span class="icon text-white-50">
+							</span> <span class="text">+ Tạo mới</span>
 							</a>
 						</div>
 					</div>
@@ -72,7 +73,7 @@
 							<h6 class="m-0 font-weight-bold text-primary">
 								<c:if test="${message != null}">
 									<div align="center">
-									    <h4 class="message">${message}</h4>
+										<h4 class="message">${message}</h4>
 									</div>
 								</c:if>
 							</h6>
@@ -84,27 +85,30 @@
 									<thead>
 										<tr>
 											<th>STT</th>
-											<th>Tên danh mục</th>
-											<th>Thao tác</th>
+											<th>Email</th>
+											<th>Họ và tên</th>
+											<th>Thành phố</th>
+											<th>Nước</th>
+											<th>Ngày đăng ký</th>
+											<th>Hành động</th>
 										</tr>
 									</thead>
-									<tfoot>
-										<tr>
-											<th width="5%"></th>
-											<th></th>
-											<th width="9%"></th>
-										</tr>
-									</tfoot>
+									
 									<tbody>
-										<c:forEach var="category" items="${listCategory}" varStatus="status">
+										<c:forEach var="customer" items="${listCustomer}"
+											varStatus="status">
 											<tr>
 												<td>${status.index + 1}</td>
-												<td>${category.name}</td>
-												<td><a href="edit_category?id=${category.categoryId}"
+												<td>${customer.email}</td>
+												<td>${customer.fullname}</td>
+												<td>${customer.city}</td>
+												<td>${customer.country}</td>
+												<td>${customer.registerDate}</td>
+												<td><a href="edit_customer?id=${customer.customerId}"
 													class="btn btn-circle"> <i class="fas fa-edit"></i>
-												</a> <a href="delete_category?id=${category.categoryId}"
+												</a> <a href="delete_customer?id=${customer.customerId}"
 													class="btn btn-circle"> <i class="fas fa-trash"></i>
-												</a></td>
+												</a></td>	
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -159,9 +163,11 @@
 		src="${pageContext.request.contextPath}/assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="${pageContext.request.contextPath}/assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="${pageContext.request.contextPath}/assets/admin/js/sb-admin-2.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/admin/js/sb-admin-2.min.js"></script>
 </body>
 </html>

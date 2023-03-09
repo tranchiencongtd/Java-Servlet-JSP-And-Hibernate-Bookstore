@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
-
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +26,16 @@
 <link
 	href="${pageContext.request.contextPath}/assets/admin/css/sb-admin-2.min.css"
 	rel="stylesheet">
+	
+<style>
+	.error {
+		color: red; 
+		font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    width: 100%;
+	}
+</style>	
 </head>
 <body id="page-top">
 	<!-- Page Wrapper -->
@@ -58,60 +68,44 @@
 						<div class="col-xl-3 col-md-6 mb-4"></div>
 
 						<div class="col-xl-3 col-md-6 mb-4 text-right">
-							<a href="${pageContext.request.contextPath}/admin/category_form.jsp"" class="btn btn-primary"> <span
-								class="icon text-white-50"> </span> <span class="text">+
-									Tạo mới</span>
+							<a href="#" class="btn btn-primary"> <span
+								class="icon text-white-50"> </span> <span class="text"></span>
 							</a>
 						</div>
 					</div>
 
 					<!-- Content Row -->
-					<!-- DataTales Example -->
-					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">
-								<c:if test="${message != null}">
-									<div align="center">
-									    <h4 class="message">${message}</h4>
+					<div class="row justify-content-center">
+						<div class="col-lg-5">
+							<div class="p-5">
+								<div class="text-center">
+								  <c:if test="${ customer   != null }">
+								  	<h1 class="h4 text-gray-900 mb-4">Chỉnh sửa</h1>
+								  </c:if>
+									 <c:if test="${ customer   == null }">
+								  	<h1 class="h4 text-gray-900 mb-4">Thêm mới</h1>
+								  </c:if>
+								</div>
+									<c:if test="${ customer != null }">
+										<form class="user" id="customerForm" action="update_customer" method="post" autocomplete="off">
+										<input type="hidden" name="customerId" value="${customer.customerId}">
+									</c:if>
+									<c:if test="${customer == null}">
+											<form class="user" id="customerForm" action="create_customer" method="post" autocomplete="off">
+									</c:if>
+
+									<jsp:directive.include file="../common/customer_form.jsp" />
+
+									<div>
+										<input type="button" value="Lưu" class="btn btn-primary btn-user btn-block" id="btnsubmit" onclick="submitForm()">
+										<a type="button" class="btn btn-primary btn-user btn-block" id="buttonCancel"> Hủy </a>
 									</div>
-								</c:if>
-							</h6>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%"
-									cellspacing="0">
-									<thead>
-										<tr>
-											<th>STT</th>
-											<th>Tên danh mục</th>
-											<th>Thao tác</th>
-										</tr>
-									</thead>
-									<tfoot>
-										<tr>
-											<th width="5%"></th>
-											<th></th>
-											<th width="9%"></th>
-										</tr>
-									</tfoot>
-									<tbody>
-										<c:forEach var="category" items="${listCategory}" varStatus="status">
-											<tr>
-												<td>${status.index + 1}</td>
-												<td>${category.name}</td>
-												<td><a href="edit_category?id=${category.categoryId}"
-													class="btn btn-circle"> <i class="fas fa-edit"></i>
-												</a> <a href="delete_category?id=${category.categoryId}"
-													class="btn btn-circle"> <i class="fas fa-trash"></i>
-												</a></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
+									<hr>
+								</form>
 							</div>
 						</div>
 					</div>
+
 					<!-- End Content Row -->
 				</div>
 				<!-- /.container-fluid -->
@@ -152,16 +146,54 @@
 		</div>
 	</div>
 
+
 	<!-- Bootstrap core JavaScript-->
 	<script
 		src="${pageContext.request.contextPath}/assets/admin/vendor/jquery/jquery.min.js"></script>
+	
+	<script
+		src="${pageContext.request.contextPath}/assets/admin/vendor/jquery/jquery.validate.min.js">
+	</script>
+	
 	<script
 		src="${pageContext.request.contextPath}/assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="${pageContext.request.contextPath}/assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
-	<script src="${pageContext.request.contextPath}/assets/admin/js/sb-admin-2.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/assets/admin/js/sb-admin-2.min.js"></script>
+	
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#customerForm").validate({
+				rules: {
+					name: "required",
+				},
+				messages: {
+					name: "Please enter customer name",
+				}
+			});
+
+			$("#buttonCancel").click(function() {
+				history.go(-1);
+			});
+		});
+		
+		function submitForm() {
+			   // Get the first form with the name
+			   // Usually the form name is not repeated
+			   // but duplicate names are possible in HTML
+			   // Therefore to work around the issue, enforce the correct index
+			   var frm = document.getElementById("customerForm");
+			   frm.submit(); // Submit the form
+			   frm.reset();  // Reset all form data
+			   return false; // Prevent page refresh
+			}
+	</script>
+
 </body>
 </html>

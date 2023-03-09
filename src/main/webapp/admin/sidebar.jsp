@@ -37,9 +37,13 @@
 	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/list_category"> <i
 			class="fas fa-fw fa-table"></i> <span>Danh mục</span></a></li>
 			
-			<!-- Nav Item  -->
+	<!-- Nav Item  -->
 	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/list_books"> <i
 			class="fas fa-fw fa-table"></i> <span>Quản lý sách</span></a></li>
+			
+	<!-- Nav Item  -->
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/list_customer"> <i
+			class="fas fa-fw fa-table"></i> <span>Quản lý khách hàng</span></a></li>
 
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">

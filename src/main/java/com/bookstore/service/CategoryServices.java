@@ -3,6 +3,7 @@ package com.bookstore.service;
 import java.io.IOException;
 import java.util.List;
 
+import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.CategoryDAO;
 import com.bookstore.entity.Category;
 
@@ -91,16 +92,20 @@ public class CategoryServices {
 	}
 	
 	public void deleteCategory() throws ServletException, IOException {
-		try {
-			int categoryId = Integer.parseInt(request.getParameter("id"));
+		int categoryId = Integer.parseInt(request.getParameter("id"));
+		BookDAO bookDAO = new BookDAO();
+		long numberOfBooks = bookDAO.countByCategory(categoryId);
+		String message;
+		
+		if (numberOfBooks > 0) {
+			message = "Không thể xóa danh mục (ID: %d) bởi vì trong danh mục vẫn còn sách";
+			message = String.format(message, numberOfBooks);
+		} else {
 			categoryDAO.delete(categoryId);
-			
-			String message = "Xóa danh mục thành công!";
-			listCategory(message);
-		} catch(Exception ex) {
-			listCategory();
-			System.out.print(ex.getMessage());
+			message = "Xóa danh mục ID: " + categoryId + " thành công";
 		}
+		
+		listCategory(message);
 		
 	}
 }

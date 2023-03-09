@@ -12,7 +12,6 @@ import com.bookstore.entity.Book;
 import com.bookstore.entity.Category;
 import com.bookstore.utils.DateUtils;
 
-import jakarta.persistence.EntityManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -206,7 +205,7 @@ public class BookServices {
 		request.setAttribute("keyword", keyword);
 		request.setAttribute("result", result);
 		
-		String resultPage = "frontend/search_result.jsp";
+		String resultPage = "client/search_result.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(resultPage);
 		requestDispatcher.forward(request, response);
 	}

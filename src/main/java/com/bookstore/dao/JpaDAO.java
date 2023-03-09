@@ -101,11 +101,30 @@ public class JpaDAO<E> {
 		return result;
 	}
 
-	public long countWithNameQuery(String queryName){
+	public long countWithNameQuery(String queryName) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
 		Query query = entityManager.createNamedQuery(queryName);
-		long result = (long)query.getSingleResult();
+        long result = (long)query.getSingleResult();
+		
 		entityManager.close();
 		return result;
+	}
+	
+	public long countWithNamedQuery(String queryName, String paramNam, Object paramValue) {
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
+		Query query = entityManager.createNamedQuery(queryName);
+		query.setParameter(paramNam, paramValue);
+		
+        long result = (long)query.getSingleResult();
+		entityManager.close();
+		return result;
+	}
+	
+	public void close() {
+		if (entityManagerFactory != null) {
+			entityManagerFactory.close();
+		}
 	}
 }
