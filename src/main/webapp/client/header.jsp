@@ -63,8 +63,8 @@
 					</span>
 					</span>
 					<div class="user-dropdown">
-						<button class="log-in" id="log-in">Đăng nhập</button>
-						<button class="register" id="register">Tạo tài khoản</button>
+						<button class="log-in" id="log-in" onclick="location.href = '${pageContext.request.contextPath}/login';">Đăng nhập</button>
+						<button class="register" id="register" onclick="location.href = '${pageContext.request.contextPath}/register';">Tạo tài khoản</button>
 						<button class="facebook">
 							<span> <i class="fa fa-facebook-square" aria-hidden="true"></i>
 							</span> Đăng nhập bằng facebook
@@ -72,12 +72,6 @@
 						<button class="google">
 							<span> <i class="fa fa-google-plus" aria-hidden="true"></i>
 							</span> Đăng nhập bằng Google
-						</button>
-						<button class="zalo">
-							<span> <img
-								src="https://brasol.vn/public/ckeditor/uploads/tin-tuc/brasol.vn-logo-zalo-vector-logo-zalo-vector.png"
-								alt="icon-zalo" />
-							</span> Đăng nhập bằng Zalo
 						</button>
 					</div>
 				</div>

@@ -26,33 +26,45 @@
 	<div id="main">
 		<jsp:include page="header.jsp" />
 
-		<c:if test="${message != null}">
-			<div align="center">
-				<h4 class="message">${message}</h4>
-			</div>
-		</c:if>
-
-		<div>
-			<h2>Đăng nhập:</h2>
-			<form id="loginForm" action="login" method="post">
-				<table>
-					<tr>
-						<td>Email:</td>
-						<td><input type="text" name="email" id="email"></td>
-					</tr>
-					<tr>
-						<td>Mật khẩu:</td>
-						<td><input type="password" name="password" id="password"
-							size="20"></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<button type="submit">Đăng nhập</button>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
+<div align="center">
+         <h2>Welcome, ${loggedCustomer.fullname}</h2>
+     </div>
+     
+     <table class="normal">
+        <tr>
+            <td><b>E-mail:</b></td>
+            <td>${loggedCustomer.email}</td>
+        </tr>
+        <tr>
+            <td><b>Họ và tên:</b></td>
+            <td>${loggedCustomer.fullname}</td>
+        </tr>
+        <tr>
+            <td><b>SĐT:</b></td>
+            <td>${loggedCustomer.phone}</td>
+        </tr>
+        <tr>
+            <td><b>Địa chỉ:</b></td>
+            <td>${loggedCustomer.address}</td>
+        </tr>
+       
+        <tr>
+            <td><b>Thành phố:</b></td>
+            <td>${loggedCustomer.city}</td>
+        </tr>
+        <tr>
+            <td><b>Zip Code:</b></td>
+            <td>${loggedCustomer.zipcode}</td>
+        </tr>
+        <tr>
+            <td><b>Đất nước:</b></td>
+            <td>${loggedCustomer.country}</td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+            <td colspan="2" align="center"><b><a href="edit_profile">Chỉnh sửa profile</a></b></td>
+        </tr>
+     </table>
 
 		<jsp:include page="footer.jsp" />
 

@@ -61,12 +61,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let btn_close = document.getElementById("btn-close");
     let modal_container = document.getElementById("modal-container");
     let cart_item_content = document.getElementById("cart-item-content")
-    log_in.onclick = function(e){
-        modal_box.style.display = "block";
-    }
-    register.onclick = function(){
-        modal_box.style.display = "block";
-    }
+   
     btn_close.onclick = function(e){
         modal_box.style.display = "none";
     }

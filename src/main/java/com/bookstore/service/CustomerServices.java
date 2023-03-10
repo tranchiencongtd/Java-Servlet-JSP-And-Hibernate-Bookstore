@@ -96,17 +96,17 @@ public class CustomerServices {
 		String message = "";
 
 		if (existCustomer != null) {
-			message = "Could not register. The email " + email + " is already registered by another customer";
+			message = "Đăng ký không thành công " + email + " đã tồn tại";
 		} else {
 			Customer newCustomer = new Customer();
 			updateCustomerFieldsFromForm(newCustomer);
 
 			customerDao.create(newCustomer);
 
-			message = "You have been created successfully, thank you!<br/>" + "<a href='login'>Click here</a> to login";
+			message = "Đăng ký thành công, thank you!<br/>" + "<a href='login'>Ấn vào đây</a> để đăng nhập";
 		}
 
-		String messagePage = "frontend/message.jsp";
+		String messagePage = "client/message.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(messagePage);
 		request.setAttribute("message", message);
 		requestDispatcher.forward(request, response);
@@ -156,19 +156,19 @@ public class CustomerServices {
 	}
 
 	public void showLogin() throws ServletException, IOException {
-		String loginPage = "frontend/login.jsp";
+		String loginPage = "client/login.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(loginPage);
 		dispatcher.forward(request, response);
 	}
 
 	public void doLogin() throws ServletException, IOException {
 		String email = request.getParameter("email");
-		String password = request.getParameter("email");
+		String password = request.getParameter("password");
 
 		Customer customer = customerDao.checkLogin(email, password);
 
 		if (customer == null) {
-			String message = "Login failed. Please check your email and password";
+			String message = "Đăng nhập thất bại. Hãy kiểm tra lại tài khoản hoặc mật khẩu của bạn!";
 			request.setAttribute("message", message);
 			showLogin();
 		} else {
@@ -189,7 +189,7 @@ public class CustomerServices {
 
 	public void showCustomerProfile() throws ServletException, IOException {
 
-		String profilePage = "frontend/customer_profile.jsp";
+		String profilePage = "client/customer_profile.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
 		dispatcher.forward(request, response);
 	}
@@ -197,7 +197,7 @@ public class CustomerServices {
 	public void showCustomerProfileEditForm() throws ServletException, IOException {
 		CommonUtility.generateCountryList(request);
 
-		String editPage = "frontend/edit_profile.jsp";
+		String editPage = "client/edit_profile.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
 		dispatcher.forward(request, response);
 	}
@@ -216,10 +216,10 @@ public class CustomerServices {
 		request.getRequestDispatcher(customerForm).forward(request, response);
 	}
 
-	public void ShowCustomerRegisterForm() throws ServletException, IOException {
+	public void showCustomerRegisterForm() throws ServletException, IOException {
 		CommonUtility.generateCountryList(request);
 
-		String registerForm = "frontend/register_form.jsp";
+		String registerForm = "client/register_form.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(registerForm);
 		dispatcher.forward(request, response);
 	}
