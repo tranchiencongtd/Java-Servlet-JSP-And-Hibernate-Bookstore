@@ -15,13 +15,13 @@ public class CustomerDAOTest extends BaseDAOTest {
 	private static CustomerDAO customerDao;
 
 	@BeforeClass
-	static void setUpBeforeClass() throws Exception {
+	public static void setUpBeforeClass() throws Exception {
 		BaseDAOTest.setupClass();
 		customerDao = new CustomerDAO();
 	}
 
 	@AfterClass
-	static void tearDownAfterClass() throws Exception {
+	public static void tearDownAfterClass() throws Exception {
 		customerDao.close();
 	}
 

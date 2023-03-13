@@ -44,6 +44,10 @@
 	<!-- Nav Item  -->
 	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/list_customer"> <i
 			class="fas fa-fw fa-table"></i> <span>Quản lý khách hàng</span></a></li>
+	
+	<!-- Nav Item  -->
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/list_review"> <i
+			class="fas fa-fw fa-table"></i> <span>Quản lý Review</span></a></li>		
 
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">
