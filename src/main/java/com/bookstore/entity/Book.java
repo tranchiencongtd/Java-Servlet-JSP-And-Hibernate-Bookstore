@@ -1,10 +1,12 @@
 package com.bookstore.entity;
 // Generated Feb 11, 2023, 10:58:22 AM by Hibernate Tools 4.3.6.Final
 
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -276,7 +278,17 @@ public class Book implements java.io.Serializable {
 		
 		return getRatingString(averageRating);
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(image);
+		result = prime * result + Objects.hash(author, base64Image, bookId, category, description, isbn, lastUpdateTime,
+				orderDetails, price, publishDate, reviews, title);
+		return result;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -286,11 +298,13 @@ public class Book implements java.io.Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Book other = (Book) obj;
-		if (bookId == null) {
-			if (other.bookId != null)
-				return false;
-		} else if (!bookId.equals(other.bookId))
-			return false;
-		return true;
+		return Objects.equals(author, other.author) && Objects.equals(base64Image, other.base64Image)
+				&& Objects.equals(bookId, other.bookId) && Objects.equals(category, other.category)
+				&& Objects.equals(description, other.description) && Arrays.equals(image, other.image)
+				&& Objects.equals(isbn, other.isbn) && Objects.equals(lastUpdateTime, other.lastUpdateTime)
+				&& Objects.equals(orderDetails, other.orderDetails)
+				&& Float.floatToIntBits(price) == Float.floatToIntBits(other.price)
+				&& Objects.equals(publishDate, other.publishDate) && Objects.equals(reviews, other.reviews)
+				&& Objects.equals(title, other.title);
 	}
 }

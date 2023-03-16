@@ -47,7 +47,11 @@
 	
 	<!-- Nav Item  -->
 	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/list_review"> <i
-			class="fas fa-fw fa-table"></i> <span>Quản lý Review</span></a></li>		
+			class="fas fa-fw fa-table"></i> <span>Quản lý Review</span></a></li>
+			
+	<!-- Nav Item  -->
+	<li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/admin/list_order"> <i
+			class="fas fa-fw fa-table"></i> <span>Quản lý đơn hàng</span></a></li>				
 
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">

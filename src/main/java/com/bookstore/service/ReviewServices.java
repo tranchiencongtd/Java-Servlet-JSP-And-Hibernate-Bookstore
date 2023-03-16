@@ -105,7 +105,7 @@ public class ReviewServices {
 	}
 
 	public void submitReview() throws ServletException, IOException {
-		Integer bookId = Integer.parseInt(request.getParameter("book_id"));
+		Integer bookId = Integer.parseInt(request.getParameter("bookId"));
 		Integer rating = Integer.parseInt(request.getParameter("rating"));
 		String headline = request.getParameter("headline");
 		String comment = request.getParameter("comment");
@@ -124,7 +124,7 @@ public class ReviewServices {
 		
 		reviewDAO.create(newReview);
 		
-		String messagePage = "frontend/review_done.jsp";
+		String messagePage = "client/review_done.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(messagePage);
 		dispatcher.forward(request, response);
 	}

@@ -31,6 +31,7 @@ public class JpaDAO<E> {
 		
 		entityManager.getTransaction().commit();
 		entityManager.close();
+		
 		return entity;
 	}
 

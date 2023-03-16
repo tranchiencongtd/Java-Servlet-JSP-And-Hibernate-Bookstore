@@ -45,7 +45,7 @@
 					<td valign="top" rowspan="2" width="20%">
 						<h2>$${book.price}</h2> <br />
 					<br />
-						<button id="buttonAddToCart">Add to Cart</button>
+						<button id="buttonAddToCart">Thêm vào giỏ hàng</button>
 					</td>
 				</tr>
 				<tr>
@@ -59,7 +59,7 @@
 							<a id="reviews">Customer Reviews</a>
 						</h2></td>
 					<td colspan="2" align='center'>
-						<button id="buttonWriteReview">Write a Customer Review</button>
+						<button id="buttonWriteReview">Viết review</button>
 					</td>
 				</tr>
 
@@ -114,19 +114,11 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#buttonWriteReview").click(function() {
-				window.location = "write_review?book_id=" + $
-				{
-					book.bookId
-				}
-				;
+				window.location = "write_review?book_id=" + ${book.bookId};
 			});
 
 			$("#buttonAddToCart").click(function() {
-				window.location = "add_to_cart?book_id=" + $
-				{
-					book.bookId
-				}
-				;
+				window.location = "add_to_cart?book_id=" + ${book.bookId};
 			});
 		});
 	</script>

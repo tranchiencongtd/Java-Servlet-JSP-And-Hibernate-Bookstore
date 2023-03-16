@@ -17,16 +17,15 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" />
-<link
-	href="${pageContext.request.contextPath}/assets/client/sass/style.css"
-	rel="stylesheet" type="text/css" />
+<link href="${pageContext.request.contextPath}/assets/client/sass/style.css" rel="stylesheet" type="text/css" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <title>Tiki - Mua hàng online giá tốt, hàng chuẩn, ship nhanh</title>
 </head>
 <body>
@@ -37,7 +36,7 @@
 			<form id="reviewForm" action="submit_review" method="post">
 				<table class="normal" width="60%">
 					<tr>
-						<td><h2>Đánh giá</h2></td>
+						<td><h2>Bạn đã gửi đánh giá cho quyển sách này rồi!</h2></td>
 						<td><h2>${loggedCustomer.fullname}</h2></td>
 					</tr>
 					<tr>
@@ -48,18 +47,10 @@
 							class="book-large"
 							src="data:image/jpg;base64, ${book.base64Image}" /></td>
 						<td>
-							<div id="rateYo"></div> <input type="hidden" id="rating"
-							name="rating" /> <input type="hidden" name="bookId"
-							value="${book.bookId}" /> <br /> <input type="text"
-							name="headline" size="60" placeholder="Tiêu đề review của bạn" />
-							<br /> <br /> <textarea name="comment" style="width: 100%;"
-								placeholder="Review của bạn...."></textarea>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="3" align="center">
-							<button type="submit">Gửi</button> &nbsp;&nbsp;
-							<button id="buttonCancel">Hủy</button>
+							<div id="rateYo"></div> <br /> <input type="text"
+							name="headline" size="60" readonly="readonly"
+							value="${review.headline}" /> <br /> <br /> <textarea style="width: 100%"
+								name="comment" readonly="readonly">${review.comment}</textarea>
 						</td>
 					</tr>
 				</table>
@@ -68,24 +59,33 @@
 		<jsp:directive.include file="footer.jsp" />
 
 	</div>
-
-
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+	<script src="./assets/client/js/header.js"></script>
+	<script src="./assets/client/js/simple_slider.js"></script>
+	<script src="./assets/client/js/sliders.js"></script>
+	<!-- <script src="./assets/client/js/timer.js"></script> -->
+	<script src="./assets/client/js/slider_deals.js"></script>
+	<script src="./assets/client/js/slider_cdn.js"></script>
+	<script src="./assets/client/js/sticky.js"></script>
+	<script src="./assets/client/js/tabs.js"></script>
+	<script src="./assets/client/js/check_tel_log_in.js"></script>
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#buttonCancel").click(function() {
-				history.go(-1);
-			});
-
-			$("#rateYo").rateYo({
-				starWidth : "40px",
-				fullStar : true,
-				onSet : function(rating, rateYoInstance) {
-					$("#rating").val(rating);
-				}
-			});
-
-		});
-	</script>
+     $(document).ready(function(){
+    	
+	     $("#rateYo").rateYo({
+		    starWidth: "40px",
+		    fullStar: true,
+		    rating: ${review.rating},
+		    readOnly: true
+		    
+	     });
+	
+});
+     </script>
 </body>
+</html>
 </html>
