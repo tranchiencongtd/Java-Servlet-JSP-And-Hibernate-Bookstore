@@ -20,6 +20,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 
 import org.hibernate.annotations.NamedQueries;
 import org.hibernate.annotations.NamedQuery;
@@ -40,7 +41,6 @@ import org.hibernate.annotations.NamedQuery;
 })
 
 public class BookOrder implements java.io.Serializable {
-	private static final long serialVersionUID = 1L;
 	
 	private Integer orderId;
 	private Customer customer;
@@ -167,7 +167,7 @@ public class BookOrder implements java.io.Serializable {
 		this.status = status;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bookOrder", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bookOrder", cascade = CascadeType.ALL)
 	public Set<OrderDetail> getOrderDetails() {
 		return this.orderDetails;
 	}
@@ -193,5 +193,14 @@ public class BookOrder implements java.io.Serializable {
 		return Objects.equals(orderId, other.orderId);
 	}
 
-	
+	@Transient
+	public int getBookCopies() {
+		int total = 0;
+		
+		for (OrderDetail orderDetail : orderDetails) {
+			total += orderDetail.getQuantity();
+		}
+		
+		return total;
+	}
 }

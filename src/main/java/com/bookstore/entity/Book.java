@@ -46,7 +46,6 @@ import jakarta.persistence.UniqueConstraint;
 						+ " OR b.description LIKE '%' || :keyword || '%'")
 })
 public class Book implements java.io.Serializable {
-	private static final long serialVersionUID = -3118468720221036780L;
 	private Integer bookId;
 	private Category category;
 	private String title;

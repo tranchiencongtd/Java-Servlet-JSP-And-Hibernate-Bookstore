@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,10 +59,10 @@
 						<div class="col-xl-3 col-md-6 mb-4"></div>
 
 						<div class="col-xl-3 col-md-6 mb-4 text-right">
-							<a href="${pageContext.request.contextPath}/admin/order_form.jsp"" class="btn btn-primary"> <span
+							<%-- <a href="${pageContext.request.contextPath}/admin/category_form.jsp"" class="btn btn-primary"> <span
 								class="icon text-white-50"> </span> <span class="text">+
 									Tạo mới</span>
-							</a>
+							</a> --%>
 						</div>
 					</div>
 
@@ -77,49 +78,18 @@
 								</c:if>
 							</h6>
 						</div>
+						
+						 <jsp:directive.include file="../common/common_order_detail.jsp" />
+						
 						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table table-bordered" id="dataTable" width="100%"
-									cellspacing="0">
-									<thead>
-										<tr>
-											<th>STT</th>
-											<th>Tên khách hàng</th>
-											<th>Số lượng</th>
-											<th>Tổng tiền</th>
-											<th>Phương thức thanh toán</th>
-											<th>Trạng thái</th>
-											<th>Ngày đặt</th>
-											<th>Hành động</th>
-										</tr>
-									</thead>
-									
-									<tbody>
-										<c:forEach var="order" items="${listOrder}" varStatus="status">
-											<tr>
-												<td>${status.index + 1}</td>
-												<td>${order.customer.fullname}</td>
-												<td>${order.bookCopies}</td>
-												<td><fmt:formatNumber value="${order.total}" type="currency"/></td>
-												<td>${order.paymentMethod}</td>
-												<td>${order.status}</td>
-												<td>${order.orderDate}</td>
-												<td>
-												  <a href="view_order?id=${order.orderId}"
-														class="btn btn-circle"> <i class="fas fa-eye"></i>
-													</a> 
-													<a href="edit_order?id=${order.orderId}"
-														class="btn btn-circle"> <i class="fas fa-edit"></i>
-													</a> 
-													<a href="delete_order?id=${order.orderId}"
-														class="btn btn-circle"> <i class="fas fa-trash"></i>
-													</a>
-												</td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
+								<div align="center">
+								 <br/>
+								    <a href="edit_order?id=${order.orderId}">Chỉnh sửa</a>
+								    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								    <a href="delete?id=${order.orderId}">Xóa</a>
+								</div>
+							
+								<jsp:directive.include file="footer.jsp" />
 						</div>
 					</div>
 					<!-- End Content Row -->

@@ -40,7 +40,6 @@ public class OrderDetail implements java.io.Serializable {
 	}
 
 	@EmbeddedId
-
 	@AttributeOverrides({ @AttributeOverride(name = "orderId", column = @Column(name = "order_id", nullable = false)),
 			@AttributeOverride(name = "bookId", column = @Column(name = "book_id", nullable = false)),
 			})
