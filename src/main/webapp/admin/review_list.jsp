@@ -104,9 +104,11 @@
 												<td>${review.headline}</td>
 												<td>${review.customer.fullname}</td>
 												<td>${review.reviewTime}</td>
-												<td><a href="edit_review?id=${review.reviewId}">Edit</a>
-													&nbsp; <a href="delete_review?id=${review.reviewId}" class="deleteLink"
-													id="${review.reviewId}">Delete</a></td>
+												<td><a href="edit_review?id=${category.categoryId}"
+													class="btn btn-circle"> <i class="fas fa-edit"></i>
+												</a> <a href="delete_review?id=${category.categoryId}"
+													class="btn btn-circle"> <i class="fas fa-trash"></i>
+												</a></td>
 											</tr>
 										</c:forEach>
 									</tbody>

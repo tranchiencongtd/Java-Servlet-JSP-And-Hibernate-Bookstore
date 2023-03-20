@@ -282,9 +282,7 @@ public class Book implements java.io.Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Arrays.hashCode(image);
-		result = prime * result + Objects.hash(author, base64Image, bookId, category, description, isbn, lastUpdateTime,
-				orderDetails, price, publishDate, reviews, title);
+		result = prime * result + ((bookId == null) ? 0 : bookId.hashCode());
 		return result;
 	}
 
@@ -297,13 +295,11 @@ public class Book implements java.io.Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Book other = (Book) obj;
-		return Objects.equals(author, other.author) && Objects.equals(base64Image, other.base64Image)
-				&& Objects.equals(bookId, other.bookId) && Objects.equals(category, other.category)
-				&& Objects.equals(description, other.description) && Arrays.equals(image, other.image)
-				&& Objects.equals(isbn, other.isbn) && Objects.equals(lastUpdateTime, other.lastUpdateTime)
-				&& Objects.equals(orderDetails, other.orderDetails)
-				&& Float.floatToIntBits(price) == Float.floatToIntBits(other.price)
-				&& Objects.equals(publishDate, other.publishDate) && Objects.equals(reviews, other.reviews)
-				&& Objects.equals(title, other.title);
+		if (bookId == null) {
+			if (other.bookId != null)
+				return false;
+		} else if (!bookId.equals(other.bookId))
+			return false;
+		return true;
 	}
 }

@@ -30,7 +30,9 @@ public class ShoppingCart {
 		while (iterator.hasNext()) {
 			Book next = iterator.next();
 			Integer quantity = cart.get(next);
-			total += quantity;
+			if (quantity != null) {
+			    total += quantity;
+			}
 		}
 
 		return total;
@@ -44,8 +46,10 @@ public class ShoppingCart {
 		while (iterator.hasNext()) {
 			Book book = iterator.next();
 			Integer quantity = cart.get(book);
-			double subTotal = quantity * book.getPrice();
-			total += subTotal;
+			if (quantity != null) {
+				double subTotal = quantity * book.getPrice();
+				total += subTotal;
+			}
 		}
 
 		return total;

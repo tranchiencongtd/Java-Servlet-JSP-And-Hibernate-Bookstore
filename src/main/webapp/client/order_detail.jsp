@@ -1,4 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,33 +19,30 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" />
-<link href="${pageContext.request.contextPath}/assets/client/sass/style.css" rel="stylesheet" type="text/css" />
+<link
+	href="${pageContext.request.contextPath}/assets/client/sass/style.css"
+	rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
 <title>Tiki - Mua hàng online giá tốt, hàng chuẩn, ship nhanh</title>
 </head>
 <body>
 	<div id="main">
 		<jsp:directive.include file="header.jsp" />
 
-		<div>
-			<h1>hay là do đây</h1>
-		</div>
+		<c:if test="${order == null}">
+			<div align="center">
+				<h2 class="pageheading">Bạn ko có quyền để xem đơn đặt hàng này.</h2>
+			</div>
+		</c:if>
 
-   	<jsp:directive.include file="footer.jsp" />
+		<c:if test="${order != null}">
+			<div align="center">
+				<h2 class="pageheading">Mã đơn hàng: ${order.orderId}</h2>
+			</div>
+
+			<jsp:directive.include file="../common/common_order_detail.jsp" />
+  	</c:if>
+			<jsp:directive.include file="footer.jsp" />
 	</div>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-	<script src="./assets/client/js/header.js"></script>
-	<script src="./assets/client/js/simple_slider.js"></script>
-	<script src="./assets/client/js/sliders.js"></script>
-	<!-- <script src="./assets/client/js/timer.js"></script> -->
-	<script src="./assets/client/js/slider_deals.js"></script>
-	<script src="./assets/client/js/slider_cdn.js"></script>
-	<script src="./assets/client/js/sticky.js"></script>
-	<script src="./assets/client/js/tabs.js"></script>
-	<script src="./assets/client/js/check_tel_log_in.js"></script>
 </body>
 </html>

@@ -72,30 +72,29 @@ public class OrderServices {
 		// shipping fee is 1.0 USD per copy
 		float shippingFee = shoppingCart.getTotalQuantity() * 1.0f;
 
-		float total = shoppingCart.getTotalAmount() + tax + shippingFee;
+		float total = shoppingCart.getTotalAmount();
 
-		session.setAttribute("tax", tax);
-		session.setAttribute("shippingFee", shippingFee);
 		session.setAttribute("total", total);
 
 		CommonUtility.generateCountryList(request);
 
-		String checkOutPage = "frontend/checkout.jsp";
+		String checkOutPage = "client/checkout.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(checkOutPage);
 		dispatcher.forward(request, response);
 	}
 
-	public void placeOrder() throws ServletException, IOException {
-		/*
-		 * String paymentMethod = request.getParameter("paymentMethod"); BookOrder order
-		 * = readOrderInfo();
-		 * 
-		 * if (paymentMethod.equals("paypal")) { PaymentServices paymentServices = new
-		 * PaymentServices(request, response);
-		 * request.getSession().setAttribute("order4Paypal", order);
-		 * paymentServices.authorizePayment(order); }else { // Cash on Delivery
-		 * placeOrderCOD(order); }
-		 */
+	public void placeOrder() throws ServletException, IOException {	
+		 String paymentMethod = request.getParameter("paymentMethod"); 
+		 BookOrder order = readOrderInfo();
+		  
+			/*
+			 * if (paymentMethod.equals("paypal")) { PaymentServices paymentServices = new
+			 * PaymentServices(request, response);
+			 * request.getSession().setAttribute("order4Paypal", order);
+			 * paymentServices.authorizePayment(order); } else { // Cash on Delivery
+			 */		  placeOrderCOD(order); 
+			/* } */
+		 
 	}
 
 	/*
@@ -134,18 +133,14 @@ public class OrderServices {
 
 	private BookOrder readOrderInfo() {
 		String paymentMethod = request.getParameter("paymentMethod");
-		String firstname = request.getParameter("firstname");
-		String lastname = request.getParameter("lastname");
+		String fullName = request.getParameter("fullname");
 		String phone = request.getParameter("phone");
-		String address1 = request.getParameter("address1");
-		String address2 = request.getParameter("address2");
-		String city = request.getParameter("city");
-		String state = request.getParameter("state");
-		String zipcode = request.getParameter("zipcode");
-		String country = request.getParameter("country");
+		String address = request.getParameter("address");
 
 		BookOrder order = new BookOrder();
-
+		order.setRecipientName(fullName);
+		order.setRecipientPhone(phone);
+		order.setShippingAddress(address);
 		order.setPaymentMethod(paymentMethod);
 
 		HttpSession session = request.getSession();
@@ -163,19 +158,19 @@ public class OrderServices {
 			Book book = iterator.next();
 			Integer quantity = items.get(book);
 			float subtotal = quantity * book.getPrice();
+				
 
 			OrderDetail orderDetail = new OrderDetail();
 			orderDetail.setBook(book);
 			orderDetail.setBookOrder(order);
-			
+			orderDetail.setQuantity(quantity);
+			orderDetail.setSubtotal(subtotal);
 
 			orderDetails.add(orderDetail);
 		}
 
 		order.setOrderDetails(orderDetails);
 
-		float tax = (float) session.getAttribute("tax");
-		float shippingFee = (float) session.getAttribute("shippingFee");
 		float total = (float) session.getAttribute("total");
 
 		order.setTotal(total);
@@ -186,9 +181,9 @@ public class OrderServices {
 	private void placeOrderCOD(BookOrder order) throws ServletException, IOException {
 		saveOrder(order);
 
-		String message = "Thank you. Your order has been received." + " We will deliver your books within a few days.";
+		String message = "Cảm ơn bạn đã đặt hàng." + " Chúng tôi sẽ giao hàng với bạn trong vài ngày tới.";
 		request.setAttribute("message", message);
-		String messagePage = "frontend/message.jsp";
+		String messagePage = "client/message.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(messagePage);
 		dispatcher.forward(request, response);
 	}
@@ -200,7 +195,7 @@ public class OrderServices {
 
 		request.setAttribute("listOrders", listOrders);
 
-		String historyPage = "frontend/order_list.jsp";
+		String historyPage = "client/order_list.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(historyPage);
 		dispatcher.forward(request, response);
 	}
@@ -214,7 +209,7 @@ public class OrderServices {
 		BookOrder order = orderDAO.get(orderId, customer.getCustomerId());
 		request.setAttribute("order", order);
 
-		String detailPage = "order_detail.jsp";
+		String detailPage = "client/order_detail.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(detailPage);
 		dispatcher.forward(request, response);
 	}

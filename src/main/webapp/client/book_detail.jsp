@@ -43,7 +43,7 @@
 							file="book_rating.jsp" /> &nbsp;&nbsp; <a hred="#reviews">${fn:length(book.reviews)}
 							Reviews</a></td>
 					<td valign="top" rowspan="2" width="20%">
-						<h2>$${book.price}</h2> <br />
+						<h2>${book.price}</h2> <br />
 					<br />
 						<button id="buttonAddToCart">Thêm vào giỏ hàng</button>
 					</td>

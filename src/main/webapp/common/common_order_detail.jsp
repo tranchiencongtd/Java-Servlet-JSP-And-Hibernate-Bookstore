@@ -1,3 +1,5 @@
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
+
 <div align="center">
 		<h2>Chi tiết hóa đơn:</h2>
 		<table>

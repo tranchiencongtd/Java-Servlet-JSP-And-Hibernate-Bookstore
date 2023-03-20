@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let modal_box = document.querySelector(".modal-box");
     let btn_close = document.getElementById("btn-close");
     let modal_container = document.getElementById("modal-container");
-    let cart_item_content = document.getElementById("cart-item-content")
+
    
     btn_close.onclick = function(e){
         modal_box.style.display = "none";
@@ -71,8 +71,6 @@ document.addEventListener("DOMContentLoaded", function(){
     modal_container.onclick = function(e){
         e.stopPropagation();
     }
-    cart_item_content.onclick = function(){
-        modal_box.style.display = "block";
-    }
+   
 
 }, false)

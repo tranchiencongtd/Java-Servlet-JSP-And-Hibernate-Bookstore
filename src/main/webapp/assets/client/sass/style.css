@@ -472,6 +472,22 @@ ul {
 #main .header .container .middle-wrap .header-user .header-account .user-dropdown button:hover {
   opacity: 0.85;
 }
+#main .header .container .middle-wrap .header-user .header-account .user-dropdown a {
+  display: block;
+  cursor: pointer;
+  line-height: 41px;
+  height: 41px;
+  width: 236px;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  margin: 0px 10px 12px 12px;
+  border-radius: 4px;
+  text-shadow: #ababab 0px 0px 1px;
+}
+#main .header .container .middle-wrap .header-user .header-account .user-dropdown a:hover {
+  opacity: 0.85;
+}
 #main .header .container .middle-wrap .header-user .header-account .user-dropdown button.zalo {
   background: #0f8edd;
   color: white;

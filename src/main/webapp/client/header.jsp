@@ -51,37 +51,59 @@
 				</form>
 			</div>
 			<div class="header-user">
-				<div class="header-account">
-					<img
-						src="${pageContext.request.contextPath}/assets/client/img/header/profile_icon.png"
-						alt="profile-icon" class="profile-icon" /> <span
-						class="item-text"> <span class="log-in">Đăng nhập /
-							Đăng ký</span> <span class="account-label"> <span>Tài
-								khoản</span> <img
-							src="${pageContext.request.contextPath}/assets/client/img/header/arrow_icon.png"
-							alt="" class="arrowIcon" />
-					</span>
-					</span>
-					<div class="user-dropdown">
-						<button class="log-in" id="log-in" onclick="location.href = '${pageContext.request.contextPath}/login';">Đăng nhập</button>
-						<button class="register" id="register" onclick="location.href = '${pageContext.request.contextPath}/register';">Tạo tài khoản</button>
-						<button class="facebook">
-							<span> <i class="fa fa-facebook-square" aria-hidden="true"></i>
-							</span> Đăng nhập bằng facebook
-						</button>
-						<button class="google">
-							<span> <i class="fa fa-google-plus" aria-hidden="true"></i>
-							</span> Đăng nhập bằng Google
-						</button>
-					</div>
+			  <c:if test="${loggedCustomer == null}"> 
+				  <div class="header-account">
+						<img
+							src="${pageContext.request.contextPath}/assets/client/img/header/profile_icon.png"
+							alt="profile-icon" class="profile-icon" />
+							<span class="item-text"> <span class="log-in">Đăng nhập/Đăng ký </span> 
+							<span class="account-label"><span>Tài khoản</span> 
+							<img
+								src="${pageContext.request.contextPath}/assets/client/img/header/arrow_icon.png"
+								alt="" class="arrowIcon" />
+						</span>
+						</span>
+						<div class="user-dropdown">
+							<button class="log-in" id="log-in" onclick="location.href = '${pageContext.request.contextPath}/login';">Đăng nhập</button>
+							<button class="register" id="register" onclick="location.href = '${pageContext.request.contextPath}/register';">Tạo tài khoản</button>
+							<button class="facebook">
+								<span> <i class="fa fa-facebook-square" aria-hidden="true"></i>
+								</span> Đăng nhập bằng facebook
+							</button>
+							<button class="google">
+								<span> <i class="fa fa-google-plus" aria-hidden="true"></i>
+								</span> Đăng nhập bằng Google
+							</button>
+						</div>
 				</div>
+			  </c:if>
+			  
+			  <c:if test="${loggedCustomer != null}">
+			  <div class="header-account">
+			  	<img
+							src="${pageContext.request.contextPath}/assets/client/img/header/profile_icon.png"
+							alt="profile-icon" class="profile-icon" />
+					<span class="item-text"> <span class="log-in">${loggedCustomer.fullname}</span> 
+		    	</span>
+		    	<div class="user-dropdown">
+						 <a href="view_profile">Chi tiết tài khoản</a> 
+				     <a href="view_orders">Đơn đặt hàng của tôi</a> 
+				     <a href="logout">Đăng xuất</a> 
+					</div>
+			   </div>
+			 </c:if>
+				
+				
 				<div class="cart-item">
-					<a href="#">
+					<a href="view_cart">
 						<div class="cart-item-content" id="cart-item-content">
 							<div class="cart-wrapper">
 								<img
 									src="${pageContext.request.contextPath}/assets/client/img/header/cart_icon.png"
-									alt="cart-icon" class="cart-icon" /> <span class="quantity">0</span>
+									alt="cart-icon" class="cart-icon" /> 
+								<%-- 	<span class="quantity">
+									${sessionScope.cart.totalQuantity}
+									</span> --%>
 							</div>
 							<span class="cart-text"> Giỏ hàng </span>
 						</div>
