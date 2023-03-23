@@ -37,29 +37,40 @@
 			<form id="reviewForm" action="submit_review" method="post">
 				<table class="normal" width="60%">
 					<tr>
-						<td><h2>Đánh giá</h2></td>
-						<td><h2>${loggedCustomer.fullname}</h2></td>
+						<td><h2 class="display-6 text-left" style="font-size: 28px; padding: 10px 0;">Đánh giá</h2></td>
 					</tr>
 					<tr>
 						<td colspan="3"><hr /></td>
 					</tr>
 					<tr>
-						<td><span id="book-title">${book.title}</span><br /> <img
-							class="book-large"
-							src="data:image/jpg;base64, ${book.base64Image}" /></td>
 						<td>
-							<div id="rateYo"></div> <input type="hidden" id="rating"
-							name="rating" /> <input type="hidden" name="bookId"
-							value="${book.bookId}" /> <br /> <input type="text"
-							name="headline" size="60" placeholder="Tiêu đề review của bạn" />
-							<br /> <br /> <textarea name="comment" style="width: 100%;"
-								placeholder="Review của bạn...."></textarea>
+						
+						<img
+							class="book-large"
+							src="data:image/jpg;base64, ${book.base64Image}" style="width: 444px"/>
+						<br />
+						<span id="book-title">${book.title} - ${book.author}</span>
+						<br />
+						<jsp:directive.include file="book_rating.jsp" />
+							</td>
+						<td>
+							<div id="rateYo"></div> 
+							<input type="hidden" id="rating" name="rating" /> 
+							<input type="hidden" name="bookId"
+							value="${book.bookId}" /> <br /> <input class="form-control" type="text"
+							name="headline" size="60" style="width: 100%;"  placeholder="Tiêu đề review của bạn" />
+							<br/>
+							<textarea class="form-control" name="comment" style="width: 100%;"
+								placeholder="Review của bạn...." rows="4"></textarea>
 						</td>
 					</tr>
 					<tr>
-						<td colspan="3" align="center">
-							<button type="submit">Gửi</button> &nbsp;&nbsp;
-							<button id="buttonCancel">Hủy</button>
+						<td></td>
+						<td  align="center">
+							<br />
+						
+							<button type="submit" class="btn btn-primary">Gửi</button> &nbsp;&nbsp;
+							<button id="buttonCancel" class="btn btn-warning">Hủy</button>
 						</td>
 					</tr>
 				</table>

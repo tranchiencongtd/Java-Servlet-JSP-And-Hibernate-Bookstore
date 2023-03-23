@@ -213,15 +213,14 @@
 									<div class="review-comment__rating-title"
 										style="display: flex; -webkit-box-align: center; align-items: center; margin: 0px 0px 4px;">
 										<div>
-											<c:forTokens items="${review.stars}" delims="," var="star">
-												<c:if test="${star eq 'on'}">
-													<img
-														src="${pageContext.request.contextPath}/assets/images/rating_on.png" />
-												</c:if>
-												<c:if test="${star eq 'off'}">
-													<img
-														src="${pageContext.request.contextPath}/assets/images/rating_off.png" />
-												</c:if>
+											 <c:forTokens items="${review.stars}" delims="," var="star">
+													 <c:if test="${star eq 'on'}">
+	                        <i class="fa fa-star" style="color: #e1ff00;"></i> 
+	                     </c:if>
+	                     <c:if test="${star eq 'off'}">
+	                         <i class="fa fa-star" style="color: #c3c6d1;"></i>
+	                     </c:if>
+                     
 											</c:forTokens>
 										</div>
 

@@ -1,11 +1,11 @@
 <c:forTokens items="${book.ratingStars}" delims="," var="star">
                      <c:if test="${star eq 'on'}">
-                        <img src="${pageContext.request.contextPath}/assets/images/rating_on.png"/>
+                        <i class="fa fa-star" style="color: #e1ff00;"></i> 
                      </c:if>
                      <c:if test="${star eq 'off'}">
-                        <img src="${pageContext.request.contextPath}/assets/images/rating_off.png"/>
+                         <i class="fa fa-star" style="color: #c3c6d1;"></i>
                      </c:if>
-                      <c:if test="${star eq 'half'}">
-                        <img src="${pageContext.request.contextPath}/assets/images/rating_half.png"/>
+                     <c:if test="${star eq 'half'}">
+                      <i class="fa fa-star-half-o" style="color: #e1ff00;"></i>
                      </c:if>
  </c:forTokens>
