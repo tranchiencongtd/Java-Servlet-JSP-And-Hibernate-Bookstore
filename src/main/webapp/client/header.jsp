@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 <div class="header" id="header">
 	<div class="container">
 		<div class="middle-wrap">

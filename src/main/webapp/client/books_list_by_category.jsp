@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,31 +27,71 @@
 	<div id="main">
 		<jsp:directive.include file="header.jsp" />
 
-		 <div class='center'>
-       <h2>${category.name}</h2> 
-    </div>
-    
-     <div class="book-group">
-       <c:forEach items="${listBooks}" var="book">
-         <div class="book">
-            <div>
-             <a href="view_book?id=${book.bookId}">
-               <img class="book-small" src="data:image/jpg;base64, ${book.base64Image}" />
-              </a>
+		 
+		<div class="Infinite-scroll" id="infinite-scroll" style="margin-top: 15px">
+      <div class="Infinite-scroll-container">
+        <div class="Infinite-scroll-content">
+          <div class="header-scroll" id="header-scroll">
+            <div class="header-title" 
+            	 style="font-weight: 700;
+									    font-size: 16px;
+									    line-height: 150%;
+									    color: rgb(39, 39, 42);
+									    display: flex;
+									    -webkit-box-align: center;
+									    align-items: center;
+									    text-transform: none"
+									    > 
+										   ${category.name}
+									    </div>
+            
+            <div class="home_infinity_tab_content" id="home_infinity_tab_content">
+            	<div class="content" id="sticky-content">
+              	<div id="home" class="tab-content active">
+              		<c:forEach items="${listBooks}" var="book">
+              			<div class="product-item">
+	                  <a href="view_book?id=${book.bookId}">
+	                    <span>
+	                      <div>
+	                        <div class="thumbnail">
+	                          <img src="data:image/jpg;base64, ${book.base64Image}" alt="" style="width: 183px; height: 183px;" />
+	                          <div class="thumbnail-wrapper">
+	                            <img src="${pageContext.request.contextPath}/assets/client/img/infinite_scroll/freeship.png" alt=""
+	                              style="width: 136px; height: 24px" />
+	                          </div>
+	                        </div>
+	                        <div class="infor">
+	                          <div class="name">
+	                            <span class="name-text">${book.title}</span>
+	                          </div>
+	                          <div class="quantity-star">
+															<div>
+												        <jsp:directive.include file="book_rating.jsp" />
+												      </div>
+	                            <div class="quantity">Đã bán 1000+</div>
+	                            <div class="price-discount has-discount">
+	                             
+	                              <div class="price-discount__price">
+		                              <fmt:setLocale value = "vi_VN"/>
+	         												<fmt:formatNumber value = "${book.price}" type = "currency"/>
+         												</div>
+	                              
+	                              <div class="price-discount__discount">-0%</div>
+	                            </div>
+	                          </div>
+	                        </div>
+	                      </div>
+	                    </span>
+	                  </a>
+                	</div>
+              		</c:forEach>
+              	</div>
+              </div>
             </div>
-            <div>
-               <a href="view_book?id=${book.bookId}">
-                  <b>${book.title}</b>
-               </a>
-            </div>
-            <div>
-                <jsp:directive.include file="book_rating.jsp" />
-            </div>
-            <div><i>by ${book.author}</i></div>
-            <div><b>${book.price}</b></div>
-         </div>
-       </c:forEach>
-    </div>
+    			</div>
+    		</div>
+			</div>
+		</div>
 
    	<jsp:directive.include file="footer.jsp" />
 	</div>

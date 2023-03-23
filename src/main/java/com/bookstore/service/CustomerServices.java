@@ -188,7 +188,6 @@ public class CustomerServices {
 	}
 
 	public void showCustomerProfile() throws ServletException, IOException {
-
 		String profilePage = "client/customer_profile.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
 		dispatcher.forward(request, response);

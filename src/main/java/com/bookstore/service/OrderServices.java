@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.bookstore.controller.client.shoppingcart.ShoppingCart;
+import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.OrderDAO;
 import com.bookstore.entity.Book;
 import com.bookstore.entity.BookOrder;
@@ -238,22 +239,17 @@ public class OrderServices {
 		HttpSession session = request.getSession();
 		BookOrder order = (BookOrder) session.getAttribute("order");
 
-		String firstname = request.getParameter("firstname");
-		String lastname = request.getParameter("lastname");
+		String fullname = request.getParameter("fullname");
 		String phone = request.getParameter("phone");
-		String address1 = request.getParameter("address1");
-		String address2 = request.getParameter("address2");
-		String city = request.getParameter("city");
-		String state = request.getParameter("state");
-		String zipcode = request.getParameter("zipcode");
-		String country = request.getParameter("country");
+		String address = request.getParameter("address");
 
-		float shippingFee = Float.parseFloat(request.getParameter("shippingFee"));
-		float tax = Float.parseFloat(request.getParameter("tax"));
 
 		String paymentMethod = request.getParameter("paymentMethod");
 		String orderStatus = request.getParameter("orderStatus");
 
+		order.setRecipientName(fullname);
+		order.setRecipientPhone(phone);
+		order.setShippingAddress(address);
 		order.setPaymentMethod(paymentMethod);
 		order.setStatus(orderStatus);
 
@@ -279,6 +275,7 @@ public class OrderServices {
 
 			OrderDetail orderDetail = new OrderDetail();
 			orderDetail.setBook(new Book(bookId));
+			orderDetail.setQuantity(quantity);
 
 			orderDetail.setBookOrder(order);
 
@@ -287,13 +284,11 @@ public class OrderServices {
 			totalAmount += subtotal;
 		}
 
-		totalAmount += shippingFee;
-		totalAmount += tax;
 		order.setTotal(totalAmount);
 
 		orderDAO.update(order);
 
-		String message = "The order " + order.getOrderId() + " has been updated successfully";
+		String message = "Đơn hàng " + order.getOrderId() + " đã cập nhật thành công";
 
 		listAllOrder(message);
 	}
@@ -302,7 +297,77 @@ public class OrderServices {
 		Integer orderId = Integer.parseInt(request.getParameter("id"));
 		orderDAO.delete(orderId);
 
-		String message = "The order ID " + orderId + "has been deleted.";
+		String message = "Đã xóa thành công đơn hàng có mã: " + orderId;
 		listAllOrder(message);
+	}
+	
+	public void addBookToOrder() throws ServletException, IOException {
+		int bookId = Integer.parseInt(request.getParameter("bookId"));
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		
+		BookDAO bookDAO = new BookDAO();
+		Book book = bookDAO.get(bookId);
+		
+		HttpSession session = request.getSession();
+		BookOrder order = (BookOrder) session.getAttribute("order");
+		
+		Set<OrderDetail> orderDetails = order.getOrderDetails();
+		Iterator<OrderDetail> iterator = orderDetails.iterator();
+		float subtotal = quantity * book.getPrice();
+		Boolean exist = false;
+		
+		while (iterator.hasNext()) {
+			OrderDetail orderDetail = iterator.next();
+			
+			if (orderDetail.getBook().getBookId() == bookId) {
+				orderDetail.setQuantity(quantity + orderDetail.getQuantity());
+				subtotal += orderDetail.getSubtotal();
+				orderDetail.setSubtotal(subtotal);
+				exist = true;
+			}
+		}
+		
+		float newTotal = order.getTotal() + subtotal;
+		order.setTotal(newTotal);
+		
+		if(!exist) {
+			OrderDetail orderDetail = new OrderDetail();
+			orderDetail.setBook(book);
+			orderDetail.setQuantity(quantity);
+			orderDetail.setSubtotal(subtotal);
+			
+			
+			order.getOrderDetails().add(orderDetail);
+		}
+		
+		request.setAttribute("book", book);
+		session.setAttribute("NewBookPendingToAddToOrder", true);
+		
+		String resultPage = "add_book_result.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(resultPage);
+		dispatcher.forward(request, response);
+	}
+	
+	public void removeBookFromOrder() throws ServletException, IOException {
+		int bookId = Integer.parseInt(request.getParameter("id"));
+		HttpSession session = request.getSession();
+		BookOrder order = (BookOrder) session.getAttribute("order");
+		
+		Set<OrderDetail> orderDetails = order.getOrderDetails();
+		Iterator<OrderDetail> iterator = orderDetails.iterator();
+		
+		while (iterator.hasNext()) {
+			OrderDetail orderDetail = iterator.next();
+			
+			if (orderDetail.getBook().getBookId() == bookId) {
+				float newTotal = order.getTotal() - orderDetail.getSubtotal();
+				order.setTotal(newTotal);
+				iterator.remove();
+			}
+		}
+		
+		String editOrderFormPage = "order_form.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(editOrderFormPage);
+		dispatcher.forward(request, response);
 	}
 }

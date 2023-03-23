@@ -21,41 +21,103 @@
 <link
 	href="${pageContext.request.contextPath}/assets/client/sass/style.css"
 	rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+<style>
+html, body {
+	height: 100%;
+}
+
+.global-container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f5f5f5;
+}
+
+form {
+	padding-top: 10px;
+	font-size: 14px;
+}
+
+.card-title {
+	font-weight: 300;
+}
+
+.btn {
+	font-size: 14px;
+	margin-top: 20px;
+}
+
+.login-form {
+	width: 330px;
+	margin: 20px;
+}
+
+.sign-up {
+	text-align: center;
+	padding: 20px 0 0;
+}
+
+.alert {
+	margin-bottom: -30px;
+	font-size: 13px;
+	margin-top: 20px;
+}
+</style>
+
 </head>
 <body>
 	<div id="main">
 		<jsp:include page="header.jsp" />
+		<div class="global-container">
+			<div class="card login-form">
+				<div class="card-body">
+					<h3 class="card-title text-center">Đăng nhập</h3>
+					<div class="card-text">
+						<c:if test="${message != null}">
+							<div class="alert alert-primary" role="alert">${message}</div>
+						</c:if>
+						<form id="loginForm" action="login" method="post">
+							<!-- to error: add class "has-danger" -->
+							<div class="form-group">
+								<label for="email">Email</label> 
+								<input name="email" type="email" class="form-control form-control-sm" id="email" aria-describedby="emailHelp" />
+							</div>
+							<div class="form-group" style="margin-top: 10px">
+								<label for="password">Mật khẩu</label> 
+								<input name="password" type="password" class="form-control form-control-sm" id="password" />
+							</div>
+							<div class="text-center">
+								<button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+							</div>
 
-		<c:if test="${message != null}">
-			<div align="center">
-				<h4 class="message">${message}</h4>
+							<div class="sign-up">
+								Bạn chưa có tài khoản? <a href="register">Tạo mới</a>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
-		</c:if>
-
-		<div>
-			<h2>Đăng nhập:</h2>
-			<form id="loginForm" action="login" method="post">
-				<table>
-					<tr>
-						<td>Email:</td>
-						<td><input type="text" name="email" id="email"></td>
-					</tr>
-					<tr>
-						<td>Mật khẩu:</td>
-						<td><input type="password" name="password" id="password"
-							size="20"></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center">
-							<button type="submit">Đăng nhập</button>
-						</td>
-					</tr>
-				</table>
-			</form>
 		</div>
 
 		<jsp:include page="footer.jsp" />
 
 	</div>
+	<script>
+		function submitForm() {
+			// Get the first form with the name
+			// Usually the form name is not repeated
+			// but duplicate names are possible in HTML
+			// Therefore to work around the issue, enforce the correct index
+			var frm = document.getElementById("loginForm");
+			frm.submit(); // Submit the form
+			frm.reset(); // Reset all form data
+			return false; // Prevent page refresh
+		}
+	</script>
+
 </body>
 </html>

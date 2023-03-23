@@ -80,7 +80,7 @@
 							<div class="p-5">
 								<div class="text-center">
 									<h2>Thêm sách cho đơn hàng có mã: ${order.orderId}</h2>
-									<form action="add_book_to_order" method="post">
+									<form action="add_book_to_order" id="addBookToOrderForm" method="post">
 										<table>
 											<tr>
 												<td>Chọn sách:</td>
@@ -198,7 +198,7 @@
 				// Usually the form name is not repeated
 				// but duplicate names are possible in HTML
 				// Therefore to work around the issue, enforce the correct index
-				var frm = document.getElementById("add_book_to_order");
+				var frm = document.getElementById("addBookToOrderForm");
 				frm.submit(); // Submit the form
 				frm.reset(); // Reset all form data
 				return false; // Prevent page refresh

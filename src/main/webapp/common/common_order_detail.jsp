@@ -1,59 +1,62 @@
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
-
-<div align="center">
-		<h2>Chi tiết hóa đơn:</h2>
-		<table>
+<fmt:setLocale value = "vi_VN"/>
+<div>
+		<h2 class="display-6 text-left" style="font-size: 28px; padding: 10px 0;">Chi tiết hóa đơn</h2>
+		<table class="table table-bordered">
 		    <tr>
-		        <td><b>Người đặt: </b></td>
+		        <td>Người đặt</td>
 		        <td>${order.customer.fullname}</td>
 		    </tr>
 		    <tr>
-		        <td><b>Trạng thái: </b></td>
+		        <td>Trạng thái</td>
 		        <td>${order.status}</td>
 		    </tr>
 		     <tr>
-		        <td><b>Ngày đặt: </b></td>
-		        <td>${order.orderDate}</td>
+		        <td>Ngày đặt</td>
+		        <td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${order.orderDate}" /></td>
 		    </tr>
 		    <tr>
-		        <td><b>Phương thức thanh toán: </b></td>
+		        <td>Phương thức thanh toán: </td>
 		        <td>${order.paymentMethod}</td>
 		    </tr>
 		    <tr>
-		        <td><b>Số lượng: </b></td>
+		        <td>Tổng số lượng</td>
 		        <td>${order.bookCopies}</td>
 		    </tr>
-		     <tr>
-		        <td><b>Tổng: </b></td>
+		     <tr> 
+		        <td>Tổng tiền</td>
 		        <td><fmt:formatNumber value="${order.total}" type="currency"/></td>
 		    </tr>
 		</table>
-		<h2>Thông tin người nhận:</h2>
-		<table>
+		
+		
+		<h2 class="display-6 text-left" style="font-size: 28px; padding: 10px 0;">Thông tin người nhận</h2>
+		<table class="table table-bordered">
 		     <tr>
-		        <td><b>Người nhận: </b></td>
+		        <td>Người nhận</td>
 		        <td>${order.recipientName}</td>
 		    </tr>
 		     <tr>
-		        <td><b>SĐT: </b></td>
+		        <td>SĐT</td>
 		        <td>${order.recipientPhone}</td>
 		    </tr>
 		     <tr>
-		        <td><b>Địa chỉ: </b></td>
+		        <td>Địa chỉ</td>
 		        <td>${order.shippingAddress}</td>
 		    </tr>
 		</table>
 	</div>
-	<div align="center">
-	   <h2>Ordered Books</h2>
-	   <table border="1">
+	
+	<div>
+	   <h2 class="display-6 text-left" style="font-size: 28px; padding: 10px 0;">Sản phẩm</h2>
+	   <table class="table table-bordered table-striped">
 	       <tr>
-	           <th>STT</th>
+	           <th style="width: 10px">STT</th>
 	           <th>Tên sách</th>
 	           <th>Tác giả</th>
 	           <th>Giá</th>
-	           <th>Số lượng</th>
-	           <th>Tổng</th>
+	           <th style="width: 70px">SL</th>
+	           <th style="width: 150px">Thành tiền</th>
 	       </tr>
 	       <c:forEach items="${order.orderDetails}" var="orderDetail" varStatus="status">
 	       <tr>
@@ -63,14 +66,14 @@
 	               ${orderDetail.book.title}
 	           </td>
 	           <td>${orderDetail.book.author}</td>
-	           <td><fmt:formatNumber value="${orderDetail.book.price}" type="currency"/></td>
+	           <td><fmt:setLocale value = "vi_VN"/><fmt:formatNumber value="${orderDetail.book.price}" type="currency"/></td>
 	           <td>${orderDetail.quantity}</td>
-	           <td><fmt:formatNumber value="${orderDetail.subtotal}" type="currency"/></td>
+	           <td><fmt:setLocale value = "vi_VN"/><fmt:formatNumber value="${orderDetail.subtotal}" type="currency"/></td>
 	       </tr>
 	       </c:forEach>
 	       <tr>
 	           <td colspan="6" align="right">
-	              <p>Tổng:<fmt:formatNumber value="${order.total}" type="currency"/></p>
+	              <p class="book-price-fix">Tổng tiền: <fmt:setLocale value = "vi_VN"/><fmt:formatNumber value="${order.total}" type="currency"/></p>
 	           </td>
 	       </tr>
 	   </table>

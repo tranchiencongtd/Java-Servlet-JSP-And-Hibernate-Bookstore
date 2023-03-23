@@ -24,25 +24,32 @@
 	rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <title>Tiki - Mua hàng online giá tốt, hàng chuẩn, ship nhanh</title>
+<style>
+th {
+	color: #38383d;
+	font-weight: normal;
+}
+</style>
 </head>
 <body>
 	<div id="main">
 		<jsp:directive.include file="header.jsp" />
 
-		<c:if test="${order == null}">
-			<div align="center">
-				<h2 class="pageheading">Bạn ko có quyền để xem đơn đặt hàng này.</h2>
-			</div>
-		</c:if>
+		<div class="container-fix">
+			<c:if test="${order == null}">
+				<div class="alert alert-danger" role="alert">Bạn ko có quyền
+					để xem đơn đặt hàng này!</div>
+			</c:if>
 
-		<c:if test="${order != null}">
-			<div align="center">
-				<h2 class="pageheading">Mã đơn hàng: ${order.orderId}</h2>
-			</div>
+			<c:if test="${order != null}">
+				<div class="alert alert-primary" role="alert">Mã đơn hàng:
+					${order.orderId}</div>
 
-			<jsp:directive.include file="../common/common_order_detail.jsp" />
-  	</c:if>
-			<jsp:directive.include file="footer.jsp" />
+				<jsp:directive.include file="../common/common_order_detail.jsp" />
+			</c:if>
+		</div>
+
+		<jsp:directive.include file="footer.jsp" />
 	</div>
 </body>
 </html>

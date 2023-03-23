@@ -21,50 +21,111 @@
 <link
 	href="${pageContext.request.contextPath}/assets/client/sass/style.css"
 	rel="stylesheet" type="text/css" />
+<style>
+.global-container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f5f5f5;
+}
+
+.card {
+	border: none !important;
+}
+
+form {
+	padding-top: 10px;
+	font-size: 14px;
+}
+
+.card-title {
+	font-weight: 300;
+}
+
+.btn {
+	font-size: 14px;
+	margin-top: 20px;
+}
+
+.login-form {
+	width: 500px;
+	margin: 20px;
+}
+
+tr td {
+	padding-top: 5px;
+}
+
+
+
+table {
+	width: 100%;
+}
+
+tr {
+	width: 100%;
+}
+
+td input {
+	width: 100%;
+}
+
+
+</style>
 </head>
 <body>
 	<div id="main">
 		<jsp:include page="header.jsp" />
 
-<div align="center">
-         <h2>Welcome, ${loggedCustomer.fullname}</h2>
-     </div>
-     
-     <table class="normal">
-        <tr>
-            <td><b>E-mail:</b></td>
-            <td>${loggedCustomer.email}</td>
-        </tr>
-        <tr>
-            <td><b>Họ và tên:</b></td>
-            <td>${loggedCustomer.fullname}</td>
-        </tr>
-        <tr>
-            <td><b>SĐT:</b></td>
-            <td>${loggedCustomer.phone}</td>
-        </tr>
-        <tr>
-            <td><b>Địa chỉ:</b></td>
-            <td>${loggedCustomer.address}</td>
-        </tr>
-       
-        <tr>
-            <td><b>Thành phố:</b></td>
-            <td>${loggedCustomer.city}</td>
-        </tr>
-        <tr>
-            <td><b>Zip Code:</b></td>
-            <td>${loggedCustomer.zipcode}</td>
-        </tr>
-        <tr>
-            <td><b>Đất nước:</b></td>
-            <td>${loggedCustomer.country}</td>
-        </tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr>
-            <td colspan="2" align="center"><b><a href="edit_profile">Chỉnh sửa profile</a></b></td>
-        </tr>
-     </table>
+		<div class="global-container">
+			<div class="card login-form">
+				<div class="card-body">
+					<h3 class="card-title text-center">${loggedCustomer.fullname}</h3>
+						<table class="table table-bordered">
+							<tr>
+								<td><b>E-mail</b></td>
+								<td>${loggedCustomer.email}</td>
+							</tr>
+							<tr>
+								<td><b>Họ và tên</b></td>
+								<td>${loggedCustomer.fullname}</td>
+							</tr>
+							<tr>
+								<td><b>SĐT</b></td>
+								<td>${loggedCustomer.phone}</td>
+							</tr>
+							<tr>
+								<td><b>Địa chỉ</b></td>
+								<td>${loggedCustomer.address}</td>
+							</tr>
+
+							<tr>
+								<td><b>Thành phố</b></td>
+								<td>${loggedCustomer.city}</td>
+							</tr>
+							<tr>
+								<td><b>Zip Code</b></td>
+								<td>${loggedCustomer.zipcode}</td>
+							</tr>
+							<tr>
+								<td><b>Đất nước</b></td>
+								<td>${loggedCustomer.country}</td>
+							</tr>
+							
+							
+						</table>
+						<div class="text-center">
+							<a href="edit_profile">Chỉnh sửa profile</a>
+						</div>
+						
+				
+				</div>
+			</div>
+		</div>
+
+
+
 
 		<jsp:include page="footer.jsp" />
 

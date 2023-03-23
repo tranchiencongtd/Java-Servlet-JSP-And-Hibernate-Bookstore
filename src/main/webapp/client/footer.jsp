@@ -1,4 +1,4 @@
-<div class="footer" style="margin-top: 15%">
+<div class="footer" style="margin-top: 15px">
 	<div class="footer-container" id="footer-container">
 		<div class="footer-content">
 			<div class="block" style="width: 268px">
@@ -44,18 +44,8 @@
 			<div class="block">
 				<h4>PHƯƠNG THỨC THANH TOÁN</h4>
 				<p style="margin-bottom: 10px">
-					<img
-						src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/visa.svg"
-						alt="" class="icon" style="width: 54px; height: 33px" /> <img
-						src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/mastercard.svg"
-						alt="" class="icon" style="width: 54px; height: 33px" /> <img
-						src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/jcb.svg"
-						alt="" class="icon" style="width: 54px; height: 33px" /> <img
-						src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/jcb.svg"
-						alt="" class="icon" style="width: 54px; height: 33px" /> <img
+					 <img
 						src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/internet-banking.svg"
-						alt="" class="icon" style="width: 54px; height: 33px" /> <img
-						src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/installment.svg"
 						alt="" class="icon" style="width: 54px; height: 33px" />
 				</p>
 				<h4>DỊCH VỤ GIAO HÀNG</h4>
@@ -69,12 +59,6 @@
 				<h4>KẾT NỐI VỚI CHÚNG TÔI</h4>
 				<p style="margin-bottom: 10px">
 					<a href="#" class="icon"> <img
-						src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/fb.svg"
-						alt="" style="width: 32px; height: 32px" />
-					</a> <a href="#" class="icon"> <img
-						src="https://frontend.tikicdn.com/_desktop-next/static/img/footer/youtube.svg"
-						alt="" style="width: 32px; height: 32px" />
-					</a> <a href="#" class="icon"> <img
 						src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/ae1e0117229179.562b755ac0ef2.png"
 						alt="" style="width: 32px; height: 32px" />
 					</a>

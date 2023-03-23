@@ -58,11 +58,11 @@
 						<div class="col-xl-3 col-md-6 mb-4"></div>
 
 						<div class="col-xl-3 col-md-6 mb-4 text-right">
-							<a
+							<%-- <a
 								href="${pageContext.request.contextPath}/admin/review_form.jsp"
 								" class="btn btn-primary"> <span class="icon text-white-50">
 							</span> <span class="text">+ Tạo mới</span>
-							</a>
+							</a> --%>
 						</div>
 					</div>
 
@@ -104,9 +104,9 @@
 												<td>${review.headline}</td>
 												<td>${review.customer.fullname}</td>
 												<td>${review.reviewTime}</td>
-												<td><a href="edit_review?id=${category.categoryId}"
+												<td><a href="edit_review?id=${review.reviewId}"
 													class="btn btn-circle"> <i class="fas fa-edit"></i>
-												</a> <a href="delete_review?id=${category.categoryId}"
+												</a> <a href="delete_review?id=${review.reviewId}"
 													class="btn btn-circle"> <i class="fas fa-trash"></i>
 												</a></td>
 											</tr>

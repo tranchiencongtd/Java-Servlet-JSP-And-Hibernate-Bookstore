@@ -448,7 +448,7 @@ ul {
   position: absolute;
   z-index: 3;
   left: -65px;
-  top: 55px;
+  top: 50px;
   width: 260px;
   box-sizing: border-box;
   padding: 15px 0px;
@@ -817,7 +817,7 @@ ul {
 #main .category-tabbar-wrapper .container {
   background-color: white;
   width: 1240px;
-  padding: 15px 0px;
+  padding: 12px 0px;
   margin: 0px auto;
   position: relative;
 }
@@ -1650,7 +1650,7 @@ ul {
 }
 #main .Infinite-scroll .Infinite-scroll-container .Infinite-scroll-content .home_infinity_tab_content .content .tab-content .product-item a span div .infor .quantity-star .price-discount .price-discount__discount {
   position: relative;
-  bottom: -6px;
+  bottom: -3px;
   padding: 0px 2px;
   height: 15px;
   text-align: center;
@@ -1788,3 +1788,46 @@ ul {
   align-items: center;
   width: 226px;
 }/*# sourceMappingURL=style.css.map */
+
+.title-book-fix {
+	font-weight: 700;
+   font-size: 16px;
+   line-height: 150%;
+   color: rgb(39, 39, 42);
+   display: flex;
+   -webkit-box-align: center;
+   align-items: center;
+   text-transform: none"
+}
+
+.book-price-fix {
+	  color: #ff424e;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 550;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+.container-fix {
+	width: 1270px; padding-left: 15px; padding-right: 15px; margin-right: auto; margin-left: auto; margin-top: 15px
+}
+
+.header-title-fix {
+	font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  color: rgb(39, 39, 42);
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  text-transform: none;
+  padding-left: 10px;
+}
+
+.price-color {
+	color: rgb(255, 66, 78);
+}

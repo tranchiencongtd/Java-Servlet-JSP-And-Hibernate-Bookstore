@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
+<fmt:setLocale value="vi_VN" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,7 +80,7 @@
 						<div class="col-lg-5">
 							<div class="p-5">
 								<div align="center">
-									<h2 class="pageheading">Mã đơn hàng chỉnh sửa: ${order.orderId}</h2>
+									<h2 class="display-6 text-left" style="font-size: 28px; padding: 10px 0;" >Mã đơn hàng chỉnh sửa: ${order.orderId}</h2>
 								</div>
 
 								<c:if test="${message != null}">
@@ -90,18 +91,18 @@
 
 								<form action="update_order" method="post" id="orderForm">
 									<div align="center">
-										<table>
-											<h2>Order Overview:</h2>
+										<table class="table table-bordered">
+											<h2 class="display-6 text-left" style="font-size: 28px; padding: 10px 0;">Tổng quan đơn hàng:</h2>
 											<tr>
-												<td><b>Ordered By: </b></td>
+												<td><b>Được mua bởi: </b></td>
 												<td>${order.customer.fullname}</td>
 											</tr>
 											<tr>
-												<td><b>Order Date: </b></td>
+												<td><b>Ngày mua: </b></td>
 												<td>${order.orderDate}</td>
 											</tr>
 											<tr>
-												<td><b>Payment Method: </b></td>
+												<td><b>Phương thức thanh toán: </b></td>
 												<td><select name="paymentMethod">
 														<option value="Cash On Delivery"
 															<c:if test="${order.paymentMethod eq 'Cash On Delivery'}">selected='selected'</c:if>>Cash
@@ -112,7 +113,7 @@
 												</select></td>
 											</tr>
 											<tr>
-												<td><b>Order Status: </b></td>
+												<td><b>Trạng thái đơn hàng: </b></td>
 												<td><select name="orderStatus">
 														<option value="Processing"
 															<c:if test="${order.status eq 'Processing'}">selected='selected'</c:if>>Processing</option>
@@ -127,8 +128,8 @@
 												</select></td>
 											</tr>
 										</table>
-										<h2>Thông tin người nhận</h2>
-										<table>
+										<h2 class="display-6 text-left" style="font-size: 28px; padding: 10px 0;">Thông tin người nhận</h2>
+										<table class="table table-bordered">
 											<tr>
 												<td><b>Tên người nhận: </b></td>
 												<td><input type="text" name="fullname" id="fullname"
@@ -147,15 +148,15 @@
 										</table>
 									</div>
 									<div align="center">
-										<h2>Ordered Books</h2>
-										<table border="1">
+										<h2>Đơn hàng</h2>
+										<table class="table table-bordered table-striped">
 											<tr>
-												<th>Index</th>
-												<th>Book Title</th>
-												<th>Author</th>
-												<th>Price</th>
-												<th>Quantity</th>
-												<th>Subtotal</th>
+												<th>STT</th>
+												<th>Tên sách</th>
+												<th>Tác giả</th>
+												<th>Giá</th>
+												<th>Số lượng</th>
+												<th>Tổng</th>
 												<th></th>
 											</tr>
 											<c:forEach items="${order.orderDetails}" var="orderDetail"
@@ -194,7 +195,7 @@
 															value="${order.shippingFee}" />
 													</p> --%>
 													<p>
-														TOTAL:
+														TỔNG:
 														<fmt:formatNumber value="${order.total}" type="currency" />
 													</p>
 												</td>
@@ -203,9 +204,9 @@
 									</div>
 									<div align="center">
 										<br /> <a href="javascript:showAddBookPopup()"><b>Thêm sách</b></a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-										<input type="submit" value="Lưu" />
+										<input class="btn btn-primary" type="submit" value="Lưu" />
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-										<input type="button" value="Hủy" onclick="javascript:window.location.href='list_order';" />
+										<input class="btn btn-primary" type="button" value="Hủy" onclick="javascript:window.location.href='list_order';" />
 									</div>
 								</form>
 							</div>

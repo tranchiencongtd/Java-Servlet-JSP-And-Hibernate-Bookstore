@@ -1,7 +1,7 @@
 
 <table class="form-group">
 	<tr>
-		<td align="right">E-mail:</td>
+		<td align="right" >E-mail:</td>
 		<td align="left"><input type="text" class="form-control"
 			id="email" name="email" size="45" value="${customer.email}" /></td>
 	</tr>

@@ -3,7 +3,9 @@ package com.bookstore.controller.client;
 import java.io.IOException;
 import java.util.List;
 
+import com.bookstore.dao.BookDAO;
 import com.bookstore.dao.CategoryDAO;
+import com.bookstore.entity.Book;
 import com.bookstore.entity.Category;
 
 import jakarta.servlet.RequestDispatcher;
@@ -23,9 +25,15 @@ public class HomeServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategoryDAO categoryDAO = new CategoryDAO(); 
-		List<Category> listCategory = categoryDAO.listAll();
-		request.setAttribute("listCategory", listCategory);
+		BookDAO bookDAO = new BookDAO();
+		
+		List<Book> listNewBooks = bookDAO.listNewBooks();
+		List<Book> listBestSellingBooks = bookDAO.listBestSellingBooks();
+		List<Book> listMostFavoredBooks = bookDAO.listMostFavoredBooks();
+		
+		request.setAttribute("listNewBooks", listNewBooks);
+		request.setAttribute("listBestSellingBooks", listBestSellingBooks);
+		request.setAttribute("listMostFavoredBooks", listMostFavoredBooks);
 		
 		String homePage = "client/index.jsp";		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(homePage);

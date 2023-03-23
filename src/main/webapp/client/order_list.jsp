@@ -25,46 +25,55 @@
 	rel="stylesheet" type="text/css" />
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <title>Tiki - Mua hàng online giá tốt, hàng chuẩn, ship nhanh</title>
+<style>
+	th {
+	color: #38383d;
+	font-weight: normal;
+}
+</style>
 </head>
 <body>
 	<div id="main">
 		<jsp:directive.include file="header.jsp" />
 
-		<div align="center">
-			<h2 class="pageheading">Đơn đặt hàng của tôi</h2>
-		</div>
+		
+		<div class="container-fix">
+			<h1 class="display-6 mb-5">Đơn đặt hàng của bạn</h1>
 
-		<c:if test="${fn:length(listOrders) == 0}">
-			<div align="center">
-				<h3>Bạn không có đơn đặt hàng nào.</h3>
-			</div>
-		</c:if>
-		<c:if test="${fn:length(listOrders) > 0}">
-			<div align="center">
-				<table border="1" cellpadding="5">
-					<tr>
-						<th>STT</th>
-						<th>Mã hóa đơn</th>
-						<th>Số lượng</th>
-						<th>Tổng</th>
-						<th>Ngày đặt</th>
-						<th>Trạng thái</th>
-						<th>Hành động</th>
-					</tr>
-					<c:forEach var="order" items="${listOrders}" varStatus="status">
+			<c:if test="${fn:length(listOrders) == 0}">
+				<div class="alert alert-primary" role="alert">Bạn không có đơn
+					đặt hàng nào.</div>
+			</c:if>
+
+			<c:if test="${fn:length(listOrders) > 0}">
+				<div align="center" style="margin-top: 20px;">
+					<table class="table table-striped">
 						<tr>
-							<td>${status.index + 1}</td>
-							<td>${order.orderId}</td>
-							<td>${order.bookCopies}</td>
-							<td><fmt:formatNumber value="${order.total}" type="currency" /></td>
-							<td>${order.orderDate}</td>
-							<td>${order.status}</td>
-							<td><a href="show_order_detail?id=${order.orderId}">Xem chi tiết</a> &nbsp;</td>
+							<th>STT</th>
+							<th>Mã hóa đơn</th>
+							<th>Số lượng</th>
+							<th>Thành tiền</th>
+							<th>Ngày đặt</th>
+							<th>Trạng thái</th>
+							<th>Hành động</th>
 						</tr>
-					</c:forEach>
-				</table>
-			</div>
-		</c:if>
+						<c:forEach var="order" items="${listOrders}" varStatus="status">
+							<tr>
+								<td>${status.index + 1}</td>
+								<td>${order.orderId}</td>
+								<td>${order.bookCopies}</td>
+								<td><fmt:setLocale value="vi_VN" /><fmt:formatNumber value="${order.total}"
+										type="currency" /></td>
+								<td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${order.orderDate}" /></td>
+								<td>${order.status}</td>
+								<td><a style="font-size: 15px" href="show_order_detail?id=${order.orderId}">Xem chi tiết</a> &nbsp;</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</c:if>
+
+		</div>
 
 		<jsp:directive.include file="footer.jsp" />
 	</div>

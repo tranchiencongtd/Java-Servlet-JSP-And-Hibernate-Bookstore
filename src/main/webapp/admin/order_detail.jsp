@@ -27,6 +27,19 @@
 <link
 	href="${pageContext.request.contextPath}/assets/admin/css/sb-admin-2.min.css"
 	rel="stylesheet">
+<style type="text/css">
+	.display-6 {
+		color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    margin-top: 1rem;
+	}
+</style>	
 </head>
 <body id="page-top">
 	<!-- Page Wrapper -->
