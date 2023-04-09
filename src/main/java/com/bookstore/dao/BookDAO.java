@@ -48,7 +48,7 @@ public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book> {
 	
 	public List<Book> listNewBooks() {
 		
-		return super.findWithNameQuery("Book.listNew", 0, 4);
+		return super.findWithNameQuery("Book.listNew", 0, 12);
 	}
 	
 	public Book findByTitle(String title) {
@@ -74,12 +74,12 @@ public class BookDAO extends JpaDAO<Book> implements GenericDAO<Book> {
 	}
 	
 	public List<Book> listBestSellingBooks() {
-		return super.findWithNameQuery("OrderDetail.bestSelling", 0, 4);
+		return super.findWithNameQuery("OrderDetail.bestSelling", 0, 12);
 	}
 	
 	public List<Book> listMostFavoredBooks() {
 		List<Book> mostFavoredBooks = new ArrayList<>();
-		List<Object[]>result = super.findWithNameQueryObjects("Review.mostFavoredBooks", 0, 4);
+		List<Object[]>result = super.findWithNameQueryObjects("Review.mostFavoredBooks", 0, 12);
 		
 		if (!result.isEmpty()) {
 			for (Object[] elements : result) {
