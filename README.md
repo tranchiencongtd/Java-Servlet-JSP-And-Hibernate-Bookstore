@@ -32,7 +32,7 @@
   Admin User information
 ```
 
-### Using
+### Using:
 ```Powershell
 Java 19.0.2, java jakarta
 IDE: Eclipse
@@ -41,3 +41,49 @@ Server: Tomcat v10.0
 Git: Git hub
 ```
 
+## Images DEMO
+## CLIENT:
+Home
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/client/trang_chu.png?raw=true)
+
+Book Category
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/client/catgory_book.png?raw=true)
+
+Login
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/client/dang_nhap.png?raw=true)
+
+Register
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/client/dang_ky.png?raw=true)
+
+Book Detail
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/client/book_detail.png?raw=true)
+
+Rating
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/client/rating_page.png?raw=true)
+
+Cart
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/client/gio_hang.png?raw=true)
+
+Tracking
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/client/theo_doi_don_hang.png?raw=true)
+
+## ADMIN:
+Home
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/admin/trang_chu.png?raw=true)
+
+Account:
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/admin/tai_khoan.png?raw=true)
+
+Add new account: 
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/admin/themoi_tk.png?raw=true)
+
+Order:
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/admin/donhang.png?raw=true)
+
+Detail order:
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/admin/xem_don_hang.png?raw=true)
+
+Edit order:
+![alt text](https://github.com/tranchiencongtd/Java-Servlet-JSP-And-Hibernate-Bookstore/blob/main/images_demo/admin/chinh_sua_don_hang.png?raw=true)
+
+... and some function others
